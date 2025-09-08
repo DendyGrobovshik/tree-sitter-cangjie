@@ -7,19 +7,18 @@ let a = "ads"
 ---
 
 (source_file
-      (top_level_objects
-        (declaration
-          (variable_declaration
-            (patterns_maybe_irrefutable
-              (var_binding_pattern
-                (identifier)))
-            (expression
-              (literal_constant
-                (string_literal
-                  (line_string_literal
-                    (line_single_quote_string_text)
-                    (line_single_quote_string_text)
-                    (line_single_quote_string_text)))))))))
+      (top_level_declaration
+        (variable_declaration
+          (patterns_maybe_irrefutable
+            (var_binding_pattern
+              (identifier)))
+          (expression
+            (literal_constant
+              (string_literal
+                (line_string_literal
+                  (line_single_quote_string_text)
+                  (line_single_quote_string_text)
+                  (line_single_quote_string_text))))))))
 
 ====================
 Integer literals
@@ -30,27 +29,26 @@ var b = 3u16
 
 ---
 
-  (source_file
-      (top_level_objects
-        (declaration
-          (variable_declaration
-            (patterns_maybe_irrefutable
-              (var_binding_pattern
-                (identifier)))
-            (expression
-              (literal_constant
-                (integer_literal
-                  (decimal_literal))))))
-        (declaration
-          (variable_declaration
-            (patterns_maybe_irrefutable
-              (var_binding_pattern
-                (identifier)))
-            (expression
-              (literal_constant
-                (integer_literal
-                  (decimal_literal)
-                  (integer_literal_suffix))))))))
+   (source_file
+      (top_level_declaration
+        (variable_declaration
+          (patterns_maybe_irrefutable
+            (var_binding_pattern
+              (identifier)))
+          (expression
+            (literal_constant
+              (integer_literal
+                (decimal_literal))))))
+      (top_level_declaration
+        (variable_declaration
+          (patterns_maybe_irrefutable
+            (var_binding_pattern
+              (identifier)))
+          (expression
+            (literal_constant
+              (integer_literal
+                (decimal_literal)
+                (integer_literal_suffix)))))))
 
 ====================
 Float literals
@@ -61,28 +59,27 @@ var b = 3.0f64
 
 ---
 
-    (source_file
-      (top_level_objects
-        (declaration
-          (variable_declaration
-            (patterns_maybe_irrefutable
-              (var_binding_pattern
-                (identifier)))
-            (expression
-              (literal_constant
-                (float_literal
-                  (decimal_literal)
-                  (decimal_fraction
-                    (decimal_fragment)))))))
-        (declaration
-          (variable_declaration
-            (patterns_maybe_irrefutable
-              (var_binding_pattern
-                (identifier)))
-            (expression
-              (literal_constant
-                (float_literal
-                  (decimal_literal)
-                  (decimal_fraction
-                    (decimal_fragment))
-                  (float_literal_suffix))))))))
+ (source_file
+      (top_level_declaration
+        (variable_declaration
+          (patterns_maybe_irrefutable
+            (var_binding_pattern
+              (identifier)))
+          (expression
+            (literal_constant
+              (float_literal
+                (decimal_literal)
+                (decimal_fraction
+                  (decimal_fragment)))))))
+      (top_level_declaration
+        (variable_declaration
+          (patterns_maybe_irrefutable
+            (var_binding_pattern
+              (identifier)))
+          (expression
+            (literal_constant
+              (float_literal
+                (decimal_literal)
+                (decimal_fraction
+                  (decimal_fragment))
+                (float_literal_suffix)))))))

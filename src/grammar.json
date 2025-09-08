@@ -33,8 +33,11 @@
           "type": "CHOICE",
           "members": [
             {
-              "type": "SYMBOL",
-              "name": "top_level_declaration"
+              "type": "REPEAT",
+              "content": {
+                "type": "SYMBOL",
+                "name": "top_level_declaration"
+              }
             },
             {
               "type": "BLANK"

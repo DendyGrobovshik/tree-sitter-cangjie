@@ -44,7 +44,7 @@ module.exports = grammar({
   rules: {
     source_file: $ => seq(
       preamble_rules.preamble($),
-      optional($.top_level_declaration),
+      optional(repeat($.top_level_declaration)),
     ),
 
     ...common_rules,
