@@ -124,8 +124,16 @@
           "value": "{"
         },
         {
-          "type": "SYMBOL",
-          "name": "expressions_or_declarations"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "expressions_or_declarations"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         },
         {
           "type": "STRING",
@@ -1654,12 +1662,12 @@
           "name": "_declaration_access_modifier"
         },
         {
-          "type": "STRING",
-          "value": "static"
+          "type": "SYMBOL",
+          "name": "_open_modifier"
         },
         {
           "type": "STRING",
-          "value": "open"
+          "value": "static"
         },
         {
           "type": "STRING",
@@ -1699,12 +1707,12 @@
           "name": "_declaration_access_modifier"
         },
         {
-          "type": "STRING",
-          "value": "static"
+          "type": "SYMBOL",
+          "name": "_open_modifier"
         },
         {
           "type": "STRING",
-          "value": "open"
+          "value": "static"
         },
         {
           "type": "STRING",
@@ -1857,8 +1865,11 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "SYMBOL",
-          "name": "function_modifier"
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "function_modifier"
+          }
         },
         {
           "type": "STRING",
@@ -2110,6 +2121,10 @@
                 {
                   "type": "SYMBOL",
                   "name": "type"
+                },
+                {
+                  "type": "STRING",
+                  "value": "\n"
                 }
               ]
             }
@@ -2977,6 +2992,18 @@
           "type": "CHOICE",
           "members": [
             {
+              "type": "SYMBOL",
+              "name": "type_parameters"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
               "type": "SEQ",
               "members": [
                 {
@@ -3034,6 +3061,18 @@
           "type": "CHOICE",
           "members": [
             {
+              "type": "SYMBOL",
+              "name": "type_parameters"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
               "type": "SEQ",
               "members": [
                 {
@@ -3086,6 +3125,18 @@
         {
           "type": "SYMBOL",
           "name": "identifier"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "type_parameters"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         },
         {
           "type": "CHOICE",
@@ -3179,8 +3230,16 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "SYMBOL",
-          "name": "class_member_modifier"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "class_member_modifier"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         },
         {
           "type": "CHOICE",
@@ -3505,15 +3564,30 @@
       "variable_modifier",
       "class_modifier",
       "interface_modifier",
-      "enum_modifier"
+      "enum_modifier",
+      "function_modifier"
     ],
     [
       "class_modifier",
-      "interface_modifier"
+      "interface_modifier",
+      "function_modifier"
     ],
     [
       "variable_modifier",
+      "function_modifier",
       "property_modifier"
+    ],
+    [
+      "function_modifier",
+      "property_modifier"
+    ],
+    [
+      "function_modifier",
+      "variable_modifier"
+    ],
+    [
+      "function_modifier",
+      "class_modifier"
     ]
   ],
   "precedences": [],

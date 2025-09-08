@@ -18,7 +18,7 @@ const common_rules = {
     $.expression,
   ),
 
-  block: $ => seq('{', $.expressions_or_declarations, '}'),
+  block: $ => seq('{', optional($.expressions_or_declarations), '}'),
 
 }
 

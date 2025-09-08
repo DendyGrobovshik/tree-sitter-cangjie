@@ -1,7 +1,9 @@
 const nominative = ($, kind, modifier, body) => seq(
   repeat(modifier),
   kind,
-  $.identifier, optional(seq('<:', $.supertypes)),
+  $.identifier, 
+  optional($.type_parameters),
+  optional(seq('<:', $.supertypes)),
   optional($.generic_constraints),
   body
 )
@@ -24,7 +26,7 @@ const nominative_rules = {
   ),
 
   class_init: $ => seq(
-    $.class_member_modifier,
+    optional($.class_member_modifier),
     choice('init', $.identifier),
     $.function_parameters,
     $.block

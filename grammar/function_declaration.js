@@ -1,6 +1,6 @@
 const function_declaration_rules = {
   function_declaration: $ => seq(
-    $.function_modifier,
+    repeat($.function_modifier),
     'func',
     $.identifier,
     optional($.type_parameters),

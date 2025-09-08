@@ -1,0 +1,163 @@
+====================
+Class with members
+====================
+
+public open class A {
+  private init() {}
+
+  protected func foo(x: Int): String {}
+
+  private prop p: Int {
+    get() {}
+    set(v) {}
+  }
+
+  static init() {}
+}
+
+---
+
+    (source_file
+      (top_level_declaration
+        (class_declaration
+          (class_modifier)
+          (class_modifier)
+          (identifier)
+          (class_body
+            (class_member
+              (class_init
+                (class_member_modifier)
+                (function_parameters)
+                (block)))
+            (class_member
+              (function_declaration
+                (function_modifier)
+                (identifier)
+                (function_parameters
+                  (function_parameter
+                    (identifier)
+                    (type
+                      (composite_type
+                        (fq_identifier
+                          (identifier))))))
+                (type
+                  (composite_type
+                    (fq_identifier
+                      (identifier))))
+                (block)))
+            (class_member
+              (property_declaration
+                (property_modifier)
+                (identifier)
+                (type
+                  (composite_type
+                    (fq_identifier
+                      (identifier))))
+                (property_body
+                  (property_body_member
+                    (block))
+                  (property_body_member
+                    (identifier)
+                    (block)))))
+            (class_member
+              (static_init
+                (block)))))))
+
+====================
+Class with generic
+====================
+
+class A<T, R> <: B<T> where T <: R, R <: Obj {}
+
+---
+
+ (source_file
+      (top_level_declaration
+        (class_declaration
+          (identifier)
+          (type_parameters
+            (identifier)
+            (identifier))
+          (supertypes
+            (type
+              (composite_type
+                (fq_identifier
+                  (identifier))
+                (type_arguments
+                  (type
+                    (composite_type
+                      (fq_identifier
+                        (identifier))))))))
+          (generic_constraints
+            (generic_constraint
+              (identifier)
+              (supertypes
+                (type
+                  (composite_type
+                    (fq_identifier
+                      (identifier))))))
+            (generic_constraint
+              (identifier)
+              (supertypes
+                (type
+                  (composite_type
+                    (fq_identifier
+                      (identifier)))))))
+          (class_body))))
+
+
+=====
+Class with field
+=====
+
+private abstract class A {
+  let a: Int = 1
+  let b: String
+
+  A() {
+    ""
+  }
+}
+
+---
+
+    (source_file
+      (top_level_declaration
+        (class_declaration
+          (class_modifier)
+          (class_modifier)
+          (identifier)
+          (class_body
+            (class_member
+              (variable_declaration
+                (patterns_maybe_irrefutable
+                  (var_binding_pattern
+                    (identifier)))
+                (type
+                  (composite_type
+                    (fq_identifier
+                      (identifier))))
+                (expression
+                  (literal_constant
+                    (integer_literal
+                      (decimal_literal))))))
+            (class_member
+              (variable_declaration
+                (patterns_maybe_irrefutable
+                  (var_binding_pattern
+                    (identifier)))
+                (type
+                  (composite_type
+                    (fq_identifier
+                      (identifier))))))
+            (class_member
+              (class_init
+                (identifier)
+                (function_parameters)
+                (block
+                  (expressions_or_declarations
+                    (expression_or_declaration
+                      (expression
+                        (literal_constant
+                          (string_literal
+                            (line_string_literal)))))))))))))

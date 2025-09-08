@@ -9,7 +9,7 @@ const variable_declaration_rules = {
         '=',
         $.expression,
       ),
-      seq(':', $.type),
+      seq(':', $.type, '\n'),
     )
   ),
 }

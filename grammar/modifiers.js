@@ -30,8 +30,8 @@ const modifiers_rules = {
 
   function_modifier: $ => choice(
     $._declaration_access_modifier,
+    $._open_modifier,
     'static',
-    'open',
     'override',
     'abstract',
     'operator',
@@ -43,8 +43,8 @@ const modifiers_rules = {
 
   property_modifier: $ => choice(
     $._declaration_access_modifier,
+    $._open_modifier,
     'static',
-    'open',
     'override',
     'abstract',
     'redef',
