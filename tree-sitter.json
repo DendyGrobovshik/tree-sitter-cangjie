@@ -1,0 +1,40 @@
+{
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/config.schema.json",
+  "grammars": [
+    {
+      "name": "cangjie",
+      "camelcase": "Cangjie",
+      "title": "Cangjie",
+      "scope": "source.cangjie",
+      "file-types": [
+        "cj"
+      ],
+      "injection-regex": "^cangjie$",
+      "class-name": "TreeSitterCangjie",
+      "highlights": "queries/highlights.scm"
+    }
+  ],
+  "metadata": {
+    "version": "0.1.0",
+    "license": "MIT",
+    "description": "Cangjie grammar for tree-sitter",
+    "authors": [
+      {
+        "name": "DendyGrobovshik",
+        "email": "idenis.gradoboev@yandex.com"
+      }
+    ],
+    "links": {
+      "repository": "todo:"
+    }
+  },
+  "bindings": {
+    "c": true,
+    "go": true,
+    "node": true,
+    "python": true,
+    "rust": true,
+    "swift": true,
+    "zig": false
+  }
+}
