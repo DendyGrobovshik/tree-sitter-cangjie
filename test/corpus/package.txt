@@ -1,0 +1,27 @@
+=====
+Simple package
+=====
+
+package lol
+
+---
+
+(source_file
+      (package_header
+        (fq_identifier
+          (identifier))))
+
+=====
+Package with modifier
+=====
+
+public package a.b
+
+---
+
+(source_file
+      (package_header
+        (package_modifier)
+        (fq_identifier
+          (identifier)
+          (identifier))))
