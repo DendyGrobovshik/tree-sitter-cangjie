@@ -55,7 +55,26 @@ const pattern_rules = {
     ),
     ':',
     $.type,
-  )
+  ),
+
+  deconstruct_pattern: $ => choice(
+    $.constant_pattern,
+    $.wildcard_pattern,
+    $.var_binding_pattern,
+    $.tuple_pattern,
+    $.enum_pattern,
+  ),
+
+  pattern_guard: $ => seq('where', $.expression),
+
+  catch_pattern: $ => choice($.wildcard_pattern, $.exception_type_pattern),
+
+  exception_type_pattern: $ => seq(
+    choice('_', $.identifier),
+    ':',
+    $.type,
+    repeat(seq('|', $.type))
+  ),
 }
 
 module.exports = pattern_rules;

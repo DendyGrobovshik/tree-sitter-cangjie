@@ -64,15 +64,17 @@ const literals_rules = {
 
   collection_literal: $ => $.array_literal,
 
-  array_literal: $ => seq('[', $.elements, ']'),
+  array_literal: $ => seq('[', $.array_elements, ']'),
 
-  elements: $ => seq($.element, repeat(seq(',', $.element))),
+  array_elements: $ => seq($.array_element, repeat(seq(',', $.array_element))),
 
-  element: $ => $.expression,
+  array_element: $ => $.expression, // TODO: check prec
 
   tuple_literal: $ => seq(
+    '(',
     $.expression,
     repeat1(seq(',', $.expression)),
+    ')'
   ),
 
   unit_literal: _ => seq('(', ')'),

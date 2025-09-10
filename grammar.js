@@ -16,6 +16,7 @@ const function_declaration_rules = require("./grammar/function_declaration.js")
 const variable_declaration_rules = require("./grammar/variable_declaration.js")
 const type_rules = require("./grammar/type.js")
 const expression_rules = require("./grammar/expression.js")
+const atomic_expression_rules = require("./grammar/atomic_expression.js")
 const pattern_rules = require("./grammar/pattern.js")
 const extend_rules = require("./grammar/extend.js")
 const property_rules = require("./grammar/property.js")
@@ -59,6 +60,7 @@ module.exports = grammar({
     ...variable_declaration_rules,
     ...type_rules,
     ...expression_rules,
+    ...atomic_expression_rules,
     ...pattern_rules,
     ...extend_rules,
     ...property_rules,

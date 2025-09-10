@@ -1,5 +1,5 @@
 const function_declaration_rules = {
-  function_declaration: $ => seq(
+  function_declaration: $ => prec.right(seq(
     repeat($.function_modifier),
     'func',
     $.identifier,
@@ -8,7 +8,7 @@ const function_declaration_rules = {
     optional(seq(':', $.type)),
     optional($.generic_constraints),
     optional($.block)
-  ),
+  )),
 
   function_parameters: $ => seq(
     '(',
