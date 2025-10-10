@@ -43,6 +43,7 @@ module.exports = grammar({
     [$.function_modifier, $.property_modifier],
     [$.function_modifier, $.variable_modifier],
     [$.function_modifier, $.class_modifier],
+    [$.unit_literal, $.parameter_type],
   ],
 
   rules: {
@@ -67,5 +68,4 @@ module.exports = grammar({
     ...nominative_rules,
     ...annotation_rules,
   },
-
 });

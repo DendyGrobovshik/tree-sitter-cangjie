@@ -35,7 +35,7 @@ const literals_rules = {
     "u64",
   ),
 
-  decimal_literal: _ => choice(
+  decimal_literal: _ => prec.right(choice(
     seq(
       /[1-9]/,
       repeat(choice(
@@ -44,7 +44,7 @@ const literals_rules = {
       ))
     ),
     '0'
-  ),
+  )),
 
   decimal_exponent: $ => seq(
     /[eE]/,
@@ -173,7 +173,7 @@ const literals_rules = {
     choice('t', 'b', 'r', 'n', "'", '"', '\\', 'f', 'v', '0')
   ),
 
-  float_literal: $ => choice(
+  float_literal: $ => prec(1, choice(
     seq(
       choice(
         seq($.decimal_literal, $.decimal_exponent),
@@ -191,7 +191,7 @@ const literals_rules = {
       ),
       $.hexadecial_exponent,
     )
-  ),
+  )),
 
   float_literal_suffix: $ => choice('f16', 'f32', 'f64'),
 
