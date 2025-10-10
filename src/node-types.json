@@ -2131,6 +2131,12 @@
     }
   },
   {
+    "type": "multiline_comment",
+    "named": true,
+    "extra": true,
+    "fields": {}
+  },
+  {
     "type": "multiplicative_expresion",
     "named": true,
     "fields": {},
@@ -3364,6 +3370,10 @@
   },
   {
     "type": "/",
+    "named": false
+  },
+  {
+    "type": "/*",
     "named": false
   },
   {

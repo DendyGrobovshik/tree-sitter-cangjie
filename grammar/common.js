@@ -10,6 +10,8 @@ const common_rules = {
     /[^\r\n]*/
   ),
 
+  multiline_comment: $ => seq('/*', /[^*]*\*+([^/*][^*]*\*+)*/, '/'),
+
   expressions_or_declarations: $ => repeat1($.expression_or_declaration),
 
   expression_or_declaration: $ => choice(

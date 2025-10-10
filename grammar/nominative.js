@@ -12,6 +12,7 @@ const nominative_rules = {
   class_declaration: $ => nominative($, 'class', $.class_modifier, $.class_body),
   interface_declaration: $ => nominative($, 'interface', $.interface_modifier, $.interface_body),
   enum_declaration: $ => nominative($, 'enum', $.enum_modifier, $.enum_body),
+  struct_declaration: $ => nominative($, 'struct', $.struct_modifier, $.struct_body),
 
   class_body: $ => seq('{', repeat($.class_member), '}'),
 
@@ -64,7 +65,14 @@ const nominative_rules = {
     $.function_declaration,
     $.property_declaration,
     // $.macro_expression, // TODO: uncomment
-  )
+  ),
+
+  struct_body: $ => seq('{', repeat($.struct_member), '}'),
+
+  struct_member: $ => choice(
+    $.function_declaration, // TODO:
+    // TODO:
+  ),
 }
 
 module.exports = nominative_rules;

@@ -58,6 +58,10 @@ const modifiers_rules = {
     'sealed',
   ),
 
+  struct_modifier: $ => choice(
+    $._declaration_access_modifier,
+  ),
+
   class_member_modifier: $ => choice(
     $._declaration_access_modifier,
     'const',
