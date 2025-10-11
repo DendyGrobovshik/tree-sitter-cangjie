@@ -214,8 +214,12 @@
           "value": "package"
         },
         {
-          "type": "SYMBOL",
-          "name": "fq_identifier"
+          "type": "FIELD",
+          "name": "pn",
+          "content": {
+            "type": "SYMBOL",
+            "name": "fq_identifier"
+          }
         }
       ]
     },

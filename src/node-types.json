@@ -2142,15 +2142,22 @@
   {
     "type": "package_header",
     "named": true,
-    "fields": {},
+    "fields": {
+      "pn": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "fq_identifier",
+            "named": true
+          }
+        ]
+      }
+    },
     "children": {
-      "multiple": true,
-      "required": true,
+      "multiple": false,
+      "required": false,
       "types": [
-        {
-          "type": "fq_identifier",
-          "named": true
-        },
         {
           "type": "package_modifier",
           "named": true

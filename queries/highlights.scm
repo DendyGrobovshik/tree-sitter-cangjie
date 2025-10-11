@@ -1,7 +1,8 @@
 (identifier) @variable
 
+(ERROR) @error-node
+
 [
- "import"
  "package"
 
  "class"
@@ -9,7 +10,11 @@
  "struct"
  "func"
  "prop"
+ "let"
+ "var"
 ] @keyword
+
+"import" @keyword.import
 
 [
  "public"
@@ -31,8 +36,18 @@
 
 [
   "super"
-  "init"
 ] @function.builtin
+
+[
+  "init"
+] @constructor
+(enum_constructor) @constructor
+
+
+(variable_declaration (patterns_maybe_irrefutable (var_binding_pattern (identifier) @variable.member)))
+[
+  "this"
+] @variable.builtin
 
 [
  (line_comment)
@@ -46,6 +61,10 @@
 [
   "["
   "]"
+  "{"
+  "}"
+  "("
+  ")"
 ] @punctuation.bracket
 
 [
@@ -53,16 +72,14 @@
 ] @punctuation.delimiter
 
 (function_declaration (identifier) @function)
-
-(type (atomic_type) @type.builtin)
-
-(type (composite_type (fq_identifier (identifier))) @type)
-
-(function_parameter (type) @type)
-
 (function_parameter (identifier) @variable.parameter)
-
 (function_parameter ("_") @variable.parameter.builtin)
 
+(type (atomic_type) @type.builtin)
+(type (composite_type (fq_identifier (identifier) @type)))
+
 (string_literal) @string
+
+(package_header (fq_identifier (identifier) @module))
+
 
