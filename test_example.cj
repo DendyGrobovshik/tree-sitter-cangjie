@@ -38,15 +38,13 @@ protected class JsonException <: Exception {
         super(message)
     }
 
+    func foo(): Int64 { 1 }
+
     /**
      * Get class name.
-     *
-     * @return class name.
-     *
-     * @since 0.17.4
      */
     protected override func getClassName(): String {
-        return "JsonException"
+        return 1
     }
 }
 

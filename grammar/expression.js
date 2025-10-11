@@ -57,8 +57,8 @@ const expression_rules = {
   left_aux_expression: $ => prec(1, choice(
     seq($.identifier, optional($.type_arguments)),
     $.type,
-    'this',
-    'super',
+    // 'this',
+    // 'super',
     seq($.left_aux_expression, optional('?'), choice(
       prec.right(seq('.', $.identifier, optional($.type))),
       $.call_suffix,
@@ -129,7 +129,9 @@ const expression_rules = {
     seq($.postfix_expression, $.index_access),
     seq($.postfix_expression, '.', $.identifier, optional($.call_suffix), $.trailing_lambda_expression),
     seq($.identifier, optional($.call_suffix), $.trailing_lambda_expression),
-    seq($.postfix_expression, repeat(seq('?', $.quest_separated_items))),
+    // TODO: command below can cause infinite loop for
+    // func f() { return 1 }
+    // seq($.postfix_expression, repeat(seq('?', $.quest_separated_items))),
   )),
 
   call_suffix: $ => seq('(', optional(seq($.value_argument, repeat(seq(',', $.value_argument)))), ')'),

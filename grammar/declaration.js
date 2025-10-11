@@ -4,7 +4,7 @@ const declaration_rules = {
     $.variable_declaration,
     $.class_declaration,
     $.interface_declaration,
-    // $.struct_declaration,
+    $.struct_declaration,
     $.enum_declaration,
     $.type_alias_declaration,
     $.extend_declaration,

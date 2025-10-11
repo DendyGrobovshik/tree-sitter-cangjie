@@ -1,5 +1,6 @@
 const atomic_expression_rules = {
   atomic_expression: $ => choice(
+    $.identifier,
     $.literal_constant,
     $.collection_literal,
     $.tuple_literal,

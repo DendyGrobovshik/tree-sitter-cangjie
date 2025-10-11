@@ -1846,6 +1846,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "struct_declaration"
+        },
+        {
+          "type": "SYMBOL",
           "name": "enum_declaration"
         },
         {
@@ -2762,14 +2766,6 @@
             "name": "type"
           },
           {
-            "type": "STRING",
-            "value": "this"
-          },
-          {
-            "type": "STRING",
-            "value": "super"
-          },
-          {
             "type": "SEQ",
             "members": [
               {
@@ -3540,31 +3536,6 @@
                 "name": "trailing_lambda_expression"
               }
             ]
-          },
-          {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "SYMBOL",
-                "name": "postfix_expression"
-              },
-              {
-                "type": "REPEAT",
-                "content": {
-                  "type": "SEQ",
-                  "members": [
-                    {
-                      "type": "STRING",
-                      "value": "?"
-                    },
-                    {
-                      "type": "SYMBOL",
-                      "name": "quest_separated_items"
-                    }
-                  ]
-                }
-              }
-            ]
           }
         ]
       }
@@ -3877,6 +3848,10 @@
     "atomic_expression": {
       "type": "CHOICE",
       "members": [
+        {
+          "type": "SYMBOL",
+          "name": "identifier"
+        },
         {
           "type": "SYMBOL",
           "name": "literal_constant"
@@ -6067,10 +6042,11 @@
   "conflicts": [
     [
       "variable_modifier",
+      "function_modifier",
       "class_modifier",
+      "struct_modifier",
       "interface_modifier",
-      "enum_modifier",
-      "function_modifier"
+      "enum_modifier"
     ],
     [
       "class_modifier",

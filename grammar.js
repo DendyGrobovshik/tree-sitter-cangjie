@@ -24,6 +24,7 @@ const nominative_rules = require("./grammar/nominative.js")
 const annotation_rules = require("./grammar/annotation.js")
 
 // TODO: support annotation for required declarations
+// TODO: support typealias highlight
 module.exports = grammar({
   name: "cangjie",
 
@@ -38,7 +39,7 @@ module.exports = grammar({
   ],
 
   conflicts: $ => [
-    [$.variable_modifier, $.class_modifier, $.interface_modifier, $.enum_modifier, $.function_modifier],
+    [$.variable_modifier, $.function_modifier, $.class_modifier, $.struct_modifier, $.interface_modifier, $.enum_modifier],
     [$.class_modifier, $.interface_modifier, $.function_modifier],
     [$.variable_modifier, $.function_modifier, $.property_modifier],
     [$.function_modifier, $.property_modifier],
