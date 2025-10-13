@@ -10,11 +10,11 @@ const function_declaration_rules = {
     optional($.block)
   )),
 
-  function_parameters: $ => seq(
+  function_parameters: $ => prec.right(seq(
     '(',
     optional(seq($.function_parameter, repeat(seq(',', $.function_parameter)))),
     ')'
-  ),
+  )),
 
   function_parameter: $ => seq(
     choice($.identifier, '_'),

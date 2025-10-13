@@ -62,7 +62,7 @@ const modifiers_rules = {
     $._declaration_access_modifier,
   ),
 
-  class_member_modifier: $ => choice(
+  nominative_member_modifier: $ => choice(
     $._declaration_access_modifier,
     'const',
   ),

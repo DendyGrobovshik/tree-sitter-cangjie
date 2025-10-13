@@ -525,7 +525,7 @@
       "required": false,
       "types": [
         {
-          "type": "class_member",
+          "type": "nominative_member",
           "named": true
         }
       ]
@@ -580,73 +580,6 @@
         }
       ]
     }
-  },
-  {
-    "type": "class_init",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "block",
-          "named": true
-        },
-        {
-          "type": "class_member_modifier",
-          "named": true
-        },
-        {
-          "type": "function_parameters",
-          "named": true
-        },
-        {
-          "type": "identifier",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "class_member",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "class_finilizer",
-          "named": true
-        },
-        {
-          "type": "class_init",
-          "named": true
-        },
-        {
-          "type": "function_declaration",
-          "named": true
-        },
-        {
-          "type": "property_declaration",
-          "named": true
-        },
-        {
-          "type": "static_init",
-          "named": true
-        },
-        {
-          "type": "variable_declaration",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "class_member_modifier",
-    "named": true,
-    "fields": {}
   },
   {
     "type": "class_modifier",
@@ -2109,6 +2042,104 @@
     }
   },
   {
+    "type": "nominative_init",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "block",
+          "named": true
+        },
+        {
+          "type": "function_parameters",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "nominative_member_modifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "nominative_member",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "class_finilizer",
+          "named": true
+        },
+        {
+          "type": "function_declaration",
+          "named": true
+        },
+        {
+          "type": "nominative_init",
+          "named": true
+        },
+        {
+          "type": "nominative_primary_init",
+          "named": true
+        },
+        {
+          "type": "property_declaration",
+          "named": true
+        },
+        {
+          "type": "static_init",
+          "named": true
+        },
+        {
+          "type": "variable_declaration",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "nominative_member_modifier",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "nominative_primary_init",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "block",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "nominative_member_modifier",
+          "named": true
+        },
+        {
+          "type": "primary_init_params",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "non_binary",
     "named": true,
     "fields": {},
@@ -2344,6 +2375,48 @@
       "types": [
         {
           "type": "type",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "primary_init_param",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "expression",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "nominative_member_modifier",
+          "named": true
+        },
+        {
+          "type": "type",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "primary_init_params",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "primary_init_param",
           "named": true
         }
       ]
@@ -2705,7 +2778,7 @@
       "required": false,
       "types": [
         {
-          "type": "struct_member",
+          "type": "nominative_member",
           "named": true
         }
       ]
@@ -2741,21 +2814,6 @@
         },
         {
           "type": "type_parameters",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "struct_member",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "function_declaration",
           "named": true
         }
       ]

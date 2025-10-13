@@ -25,6 +25,7 @@ const annotation_rules = require("./grammar/annotation.js")
 
 // TODO: support annotation for required declarations
 // TODO: support typealias highlight
+// TODO: support operatorFunction
 module.exports = grammar({
   name: "cangjie",
 
@@ -46,7 +47,7 @@ module.exports = grammar({
     [$.function_modifier, $.variable_modifier],
     [$.function_modifier, $.class_modifier],
     [$.unit_literal, $.parameter_type],
-    [$.class_member_modifier, $.variable_declaration],
+    [$.nominative_member_modifier, $.variable_declaration],
     // [$.expression, $.assignment_expression],
     [$.expression, $.binary_expression],
     [$.assignment_expression, $.binary_expression],

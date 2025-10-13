@@ -14,20 +14,21 @@ const nominative_rules = {
   enum_declaration: $ => nominative($, 'enum', $.enum_modifier, $.enum_body),
   struct_declaration: $ => nominative($, 'struct', $.struct_modifier, $.struct_body),
 
-  class_body: $ => seq('{', repeat($.class_member), '}'),
+  class_body: $ => seq('{', repeat($.nominative_member), '}'),
 
-  class_member: $ => choice(
-    $.class_init,
+  nominative_member: $ => choice(
+    $.nominative_init,
     $.static_init,
     $.class_finilizer,
     $.variable_declaration,
     $.function_declaration,
     $.property_declaration,
+    $.nominative_primary_init,
     // $.macro_expression, // TODO: uncomment
   ),
 
-  class_init: $ => seq(
-    optional($.class_member_modifier),
+  nominative_init: $ => seq(
+    optional($.nominative_member_modifier),
     choice('init', $.identifier),
     $.function_parameters,
     $.block
@@ -67,11 +68,30 @@ const nominative_rules = {
     // $.macro_expression, // TODO: uncomment
   ),
 
-  struct_body: $ => seq('{', repeat($.struct_member), '}'),
+  struct_body: $ => seq('{', repeat($.nominative_member), '}'),
 
-  struct_member: $ => choice(
-    $.function_declaration, // TODO:
-    // TODO:
+  nominative_primary_init: $ => seq(
+    optional($.nominative_member_modifier),
+    $.identifier,
+    '(',
+    optional($.primary_init_params),
+    ')',
+    $.block,
+  ),
+
+  primary_init_params: $ => seq(
+    $.primary_init_param,
+    repeat(seq(',', $.primary_init_param)),
+  ),
+
+  primary_init_param: $ => seq(
+    optional($.nominative_member_modifier),
+    choice('let', 'var'),
+    $.identifier,
+    optional('!'),
+    ":",
+    $.type,
+    optional(seq('=', $.expression)),
   ),
 }
 
