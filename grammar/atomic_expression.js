@@ -27,6 +27,7 @@ const atomic_expression_rules = {
     'if',
     '(',
     optional($.deconstruct), $.expression,
+    ')',
     $.block,
     optional(seq('else', choice($.if_expression, $.block))),
     ')'
@@ -47,6 +48,7 @@ const atomic_expression_rules = {
 
   match_case: $ => seq(
     'case',
+    $.pattern,
     optional($.pattern_guard),
     '=>',
     $.expression_or_declaration, repeat(seq('\n', optional($.expression_or_declaration))),
