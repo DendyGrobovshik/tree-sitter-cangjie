@@ -1,7 +1,7 @@
 const variable_declaration_rules = {
   variable_declaration: $ => seq(
     repeat($.variable_modifier),
-    choice('let', 'var'),
+    choice('let', 'var', 'const'),
     $.patterns_maybe_irrefutable,
     choice(
       seq(

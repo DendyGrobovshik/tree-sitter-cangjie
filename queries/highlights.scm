@@ -1,18 +1,84 @@
-(identifier) @variable
+; update functions -> methods
+; varibles -> fields
+; see: https://github.com/nvim-treesitter/nvim-treesitter/blob/master/CONTRIBUTING.md
 
 (ERROR) @error-node
 
 [
  "package"
 
- "class"
- "interface"
- "struct"
- "func"
  "prop"
  "let"
  "var"
+ "const"
+
+ "where"
 ] @keyword
+
+[
+ "class"
+ "interface"
+ "struct"
+ "enum"
+ "type"
+] @keyword.type
+
+[
+ "throw"
+ "catch"
+ "finally"
+] @keyword.exception
+
+"func" @keyword.function
+
+[
+  "spawn"
+  ; "synchronized" TODO: add in grammar
+] @keyword.coroutine
+
+[
+  "="
+  "->"
+  "|>"
+  "??"
+  "||"
+  "&&"
+  ".."
+  "..="
+  "|"
+  "^"
+  "&"
+  "=="
+  "!="
+  "<"
+  "<="
+  ">="
+  ">"
+  "as"
+  "is"
+  "<<"
+  ">>"
+  "+"
+  "-"
+  "*"
+  "/"
+  "**"
+  "in"
+  "=>"
+  "<:"
+] @keyword.operator
+
+[
+  "case"
+  "match"
+  "if"
+] @keyword.conditional
+
+[
+  "for"
+  "while"
+  "do"
+] @keyword.repeat
 
 "import" @keyword.import
 
@@ -41,7 +107,7 @@
 [
   "init"
 ] @constructor
-(enum_constructor) @constructor
+(enum_constructor (identifier) @constructor)
 
 
 (variable_declaration (patterns_maybe_irrefutable (var_binding_pattern (identifier) @variable.member)))
@@ -68,6 +134,11 @@
 ] @punctuation.bracket
 
 [
+  "true"
+  "false"
+] @boolean
+
+[
   ","
 ] @punctuation.delimiter
 
@@ -77,9 +148,20 @@
 
 (type (atomic_type) @type.builtin)
 (type (composite_type (fq_identifier (identifier) @type)))
+(type_parameters (identifier) @type)
+(prefix_type ("?") @type.builtin)
+
+(type_alias_declaration (identifier) @type.definition)
+(class_declaration (identifier) @type.definition)
+(struct_declaration (identifier) @type.definition)
+(enum_declaration (identifier) @type.definition)
+(interface_declaration (identifier) @type.definition)
 
 (string_literal) @string
 
 (package_header (fq_identifier (identifier) @module))
 
+(line_single_quote_string_expression ("${") @punctuation.special)
+(line_single_quote_string_expression ("}") @punctuation.special)
 
+(atomic_expression (identifier) @variable) 
