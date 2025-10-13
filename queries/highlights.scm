@@ -169,6 +169,12 @@
 
 (string_literal) @string
 
+(line_single_quote_string_expression
+   (expression
+     (postfix_expression
+       (atomic_expression
+         (identifier) @variable))))
+
 (package_header (fq_identifier (identifier) @module))
 
 (line_single_quote_string_expression ("${") @punctuation.special)
