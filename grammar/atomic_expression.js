@@ -30,7 +30,6 @@ const atomic_expression_rules = {
     ')',
     $.block,
     optional(seq('else', choice($.if_expression, $.block))),
-    ')'
   ),
 
   // TODO: recheck(+match_case)
@@ -140,7 +139,7 @@ const atomic_expression_rules = {
   ),
 
   synchronized_expression: $ => seq(
-    'syncronyzed',
+    'synchronized',
     '(', $.expression, ')',
     $.block
   ),

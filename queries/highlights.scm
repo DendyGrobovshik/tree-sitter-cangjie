@@ -33,7 +33,7 @@
 
 [
   "spawn"
-  ; "synchronized" TODO: add in grammar
+  "synchronized"
 ] @keyword.coroutine
 
 [
@@ -98,6 +98,8 @@
 
 [
   "return"
+  "break"
+  "continue"
 ] @keyword.return
 
 [
@@ -108,7 +110,7 @@
   "init"
 ] @constructor
 (enum_constructor (identifier) @constructor)
-
+(enum_pattern_constructor (identifier) @constructor)
 
 (variable_declaration (patterns_maybe_irrefutable (var_binding_pattern (identifier) @variable.member)))
 [
@@ -143,8 +145,16 @@
 ] @punctuation.delimiter
 
 (function_declaration (identifier) @function)
+(nominative_primary_init (identifier) @function)
 (function_parameter (identifier) @variable.parameter)
+(primary_init_param (identifier) @variable.parameter)
 (function_parameter ("_") @variable.parameter.builtin)
+
+(postfix_expression
+          (postfix_expression
+            (atomic_expression
+              (identifier) @function.call))
+          (call_suffix))
 
 (type (atomic_type) @type.builtin)
 (type (composite_type (fq_identifier (identifier) @type)))
@@ -164,4 +174,4 @@
 (line_single_quote_string_expression ("${") @punctuation.special)
 (line_single_quote_string_expression ("}") @punctuation.special)
 
-(atomic_expression (identifier) @variable) 
+; (atomic_expression (identifier) @variable) 
