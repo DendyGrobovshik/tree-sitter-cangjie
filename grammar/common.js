@@ -12,9 +12,9 @@ const common_rules = {
 
   multiline_comment: $ => seq('/*', /[^*]*\*+([^/*][^*]*\*+)*/, '/'),
 
-  expressions_or_declarations: $ => repeat1($.expression_or_declaration),
+  expressions_or_declarations: $ => repeat1($._expression_or_declaration),
 
-  expression_or_declaration: $ => choice(
+  _expression_or_declaration: $ => choice(
     $.function_declaration,
     $.variable_declaration,
     $.expression,

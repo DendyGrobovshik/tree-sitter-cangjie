@@ -1,7 +1,7 @@
 const atomic_expression_rules = {
   atomic_expression: $ => choice(
     $.identifier,
-    $.literal_constant,
+    $._literal_constant,
     $.collection_literal,
     $.tuple_literal,
     // seq($.identifier, optional($.type_arguments), // TODO: check
@@ -41,7 +41,7 @@ const atomic_expression_rules = {
       seq('{', 
         'case', choice($.expression, '_'),
         '=>', 
-        $.expression_or_declaration, repeat1(seq('\n', optional($.expression_or_declaration))),
+        $._expression_or_declaration, repeat1(seq('\n', optional($._expression_or_declaration))),
         '}'),
     )
   ),
@@ -51,7 +51,7 @@ const atomic_expression_rules = {
     $.pattern,
     optional($.pattern_guard),
     '=>',
-    $.expression_or_declaration, repeat(seq('\n', optional($.expression_or_declaration))),
+    $._expression_or_declaration, repeat(seq('\n', optional($._expression_or_declaration))),
   ),
 
   loop_expression: $ => choice(
@@ -115,14 +115,14 @@ const atomic_expression_rules = {
     '{',
     optional($.lambda_parameters),
     '=>',
-    optional($.expression_or_declaration),
+    optional($._expression_or_declaration),
     '}'
   ),
 
   trailing_lambda_expression: $ => seq(
     '{',
     optional(seq($.lambda_parameters, '=>')),
-    optional($.expression_or_declaration),
+    optional($._expression_or_declaration),
     '}'
   ),
 

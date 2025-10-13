@@ -15,7 +15,7 @@ const pattern_rules = {
     $.enum_pattern,
   ),
 
-  constant_pattern: $ => $.literal_constant,
+  constant_pattern: $ => $._literal_constant,
 
   wildcard_pattern: _ => '_',
 

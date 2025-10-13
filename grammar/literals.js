@@ -1,10 +1,10 @@
 const string_internals = $ => repeat(choice(
   $.line_single_quote_string_expression,
-  $.line_single_quote_string_text,
+  $._line_single_quote_string_text,
 ))
 
 const literals_rules = {
-  literal_constant: $ => choice(
+  _literal_constant: $ => choice(
     $.integer_literal,
     $.string_literal,
     $.float_literal,
@@ -92,9 +92,9 @@ const literals_rules = {
     seq("'''", string_internals($), "'''"),
   ),
 
-  line_single_quote_string_expression: $ => seq('${', $.expression_or_declaration, '}'),
+  line_single_quote_string_expression: $ => seq('${', $._expression_or_declaration, '}'),
 
-  line_single_quote_string_text: $ => choice(
+  _line_single_quote_string_text: $ => choice(
     /[^"\\|\r|\n]/,
     $.escape_seq,
   ),

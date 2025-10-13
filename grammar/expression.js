@@ -25,7 +25,7 @@ const PREC = {
 const expression_rules = {
   expression: $ => choice(
     $.assignment_expression,
-    $.binary_expression,
+    $._binary_expression,
   ),
 
   assignment_expression: $ => seq(
@@ -73,7 +73,7 @@ const expression_rules = {
     ')',
   ),
 
-  binary_expression: $ => choice(
+  _binary_expression: $ => choice(
     $.flow_expression,
     $.coalescing_expression,
     $.logic_disjunction_expression,
@@ -89,39 +89,39 @@ const expression_rules = {
     $.additive_expression,
     $.multiplicative_expresion,
     $.exponent_expression,
-    $.non_binary,
+    $._non_binary,
   ),
 
-  flow_expression: $ => prec.right(PREC.FLOW, seq($.binary_expression, choice('->', '|>'), $.binary_expression)),
-  coalescing_expression: $ => prec.right(PREC.COALESCING, seq($.binary_expression, '??', $.binary_expression)),
-  logic_disjunction_expression: $ => prec.right(PREC.LOGIC_DISJUNCTION, seq($.binary_expression, '||', $.binary_expression)),
-  logic_conjunction_expression: $ => prec.right(PREC.LOGIC_CONJUNCTION, seq($.binary_expression, '&&', $.binary_expression)),
+  flow_expression: $ => prec.right(PREC.FLOW, seq($._binary_expression, choice('->', '|>'), $._binary_expression)),
+  coalescing_expression: $ => prec.right(PREC.COALESCING, seq($._binary_expression, '??', $._binary_expression)),
+  logic_disjunction_expression: $ => prec.right(PREC.LOGIC_DISJUNCTION, seq($._binary_expression, '||', $._binary_expression)),
+  logic_conjunction_expression: $ => prec.right(PREC.LOGIC_CONJUNCTION, seq($._binary_expression, '&&', $._binary_expression)),
   range_expression: $ => prec.right(PREC.RANGE, 
-    seq($.binary_expression, choice('..', '..='), $.binary_expression, optional(seq(':', $.binary_expression)))),
-  bitwise_disjunction_expresion: $ => prec.right(PREC.BITWISE_DISJUNCTION, seq($.binary_expression, '|', $.binary_expression)),
-  bitwise_xor_expression: $ => prec.right(PREC.BITWISE_XOR, seq($.binary_expression, '^', $.binary_expression)),
-  bitwise_conjunction_expression: $ => prec.right(PREC.BITWISE_CONJUNCTION, seq($.binary_expression, '&', $.binary_expression)),
+    seq($._binary_expression, choice('..', '..='), $._binary_expression, optional(seq(':', $._binary_expression)))),
+  bitwise_disjunction_expresion: $ => prec.right(PREC.BITWISE_DISJUNCTION, seq($._binary_expression, '|', $._binary_expression)),
+  bitwise_xor_expression: $ => prec.right(PREC.BITWISE_XOR, seq($._binary_expression, '^', $._binary_expression)),
+  bitwise_conjunction_expression: $ => prec.right(PREC.BITWISE_CONJUNCTION, seq($._binary_expression, '&', $._binary_expression)),
   equality_comparision_expression: $ => prec.right(PREC.EQUALITY_COMPARISION,
-    seq($.binary_expression, choice('==', '!='), $.binary_expression)),
+    seq($._binary_expression, choice('==', '!='), $._binary_expression)),
   comparision_expression: $ => prec.right(PREC.COMPARISION,
-    seq($.binary_expression, choice('<', '<=', '>=', '>'), $.binary_expression)),
-  type_check_expression: $ => prec.right(PREC.TYPE_CHECK, seq($.binary_expression, choice('as', 'is'), $.binary_expression)),
-  shifting_expression: $ => prec.right(PREC.SHIFTING_EXPRESSION, seq($.binary_expression, choice('<<', '>>'), $.binary_expression)),
-  additive_expression: $ => prec.left(PREC.ADDITIVE_EXPRESSION, seq($.binary_expression, choice('+', '-'), $.binary_expression)),
+    seq($._binary_expression, choice('<', '<=', '>=', '>'), $._binary_expression)),
+  type_check_expression: $ => prec.right(PREC.TYPE_CHECK, seq($._binary_expression, choice('as', 'is'), $._binary_expression)),
+  shifting_expression: $ => prec.right(PREC.SHIFTING_EXPRESSION, seq($._binary_expression, choice('<<', '>>'), $._binary_expression)),
+  additive_expression: $ => prec.left(PREC.ADDITIVE_EXPRESSION, seq($._binary_expression, choice('+', '-'), $._binary_expression)),
   multiplicative_expresion: $ => prec.left(PREC.MULTIPLICATIVE_EXPRESSION,
-    seq($.binary_expression, choice('*', '/'), $.binary_expression)),
-  exponent_expression: $ => prec.right(PREC.EXPONENT_EXPRESSION, seq($.binary_expression, '**', $.binary_expression)),
+    seq($._binary_expression, choice('*', '/'), $._binary_expression)),
+  exponent_expression: $ => prec.right(PREC.EXPONENT_EXPRESSION, seq($._binary_expression, '**', $._binary_expression)),
 
-  non_binary: $ => prec.right(PREC.EXPONENT_EXPRESSION + 1, $.unary_expression),
+  _non_binary: $ => prec.right(PREC.EXPONENT_EXPRESSION + 1, $._unary_expression),
 
-  unary_expression: $ => choice(
+  _unary_expression: $ => choice(
     $.prefix_expression,
     $.inc_and_dec_expression,
     $.postfix_expression,
   ),
 
-  prefix_expression: $ => prec(PREC.PREFIX, seq(repeat1(choice('-', '!')), $.unary_expression)),
-  inc_and_dec_expression: $ => prec(PREC.INC_AND_DEC, seq($.unary_expression, choice('--', '++'))),
+  prefix_expression: $ => prec(PREC.PREFIX, seq(repeat1(choice('-', '!')), $._unary_expression)),
+  inc_and_dec_expression: $ => prec(PREC.INC_AND_DEC, seq($._unary_expression, choice('--', '++'))),
 
   postfix_expression: $ => prec.right(PREC.POSTFIX, choice(
     $.atomic_expression,

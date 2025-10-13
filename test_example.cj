@@ -1,19 +1,24 @@
-package std.unittest.common
+func checkOptionValueByNameAndGetConfigurationKey<T>(name: String, value: T): ConfigurationKey {
+    let valueStr = match (value) {
+        case tos: ToString => " (${name}.toString='${tos}')"
+        case _ => ""
+    }
+    let option = "Option '${name}'${valueStr}"
 
-import std.collection.*
-import std.sync.ReentrantMutex
+    if (let Some(VALIDATORS) <- VALIDATORS.get(name)) {
+        for (validator in VALIDATORS) {
+            let status = validator(value)
+            match (status) {
+                case UnknownOptionType => continue
+                case ValidOption(configurationKey) => return configurationKey // valid, exit
+                case InvalidOption(message) => throw UnittestOptionValidationException(
+                    "${option} is invalid. ${message}")
+            }
+        }
 
-public class UnittestOptionValidationException <: Exception {
-    init() {
-        super()
+        // no one fit
+        throw UnittestOptionValidationException("${option} type is not valid.")
     }
 
-    init(message: String) {
-        super(message)
-    }
-
-    protected override func getClassName(): String {
-        return "UnittestOptionValidationException"
-    }
+    throw UnittestOptionValidationException("Option '${name}' has no validators. Use @${VALIDATOR_NAME} macro.")
 }
-
