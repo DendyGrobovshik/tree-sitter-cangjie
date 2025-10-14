@@ -184,11 +184,21 @@
 
 (string_literal) @string
 
-(line_single_quote_string_expression
-   (expression
-     (postfix_expression
-       (atomic_expression
-         (identifier) @variable))))
+; Can highlighting inside string interpolation be enhanced?
+(line_single_quote_string_expression (_ (identifier) @variable))
+(line_single_quote_string_expression (_ (_ (identifier) @variable)))
+(line_single_quote_string_expression (_ (_ (_ (identifier) @variable))))
+(line_single_quote_string_expression (_ (_ (_ (_ (identifier) @variable)))))
+(line_single_quote_string_expression (_ (_ (_ (_ (_ (identifier) @variable))))))
+(line_single_quote_string_expression (_ (_ (_ (_ (_ (_ (identifier) @variable)))))))
+(line_single_quote_string_expression (_ (_ (_ (_ (_ (_ (_ (identifier) @variable))))))))
+(line_single_quote_string_expression (_ (_ (_ (_ (_ (_ (_ (_ (identifier) @variable)))))))))
+(line_single_quote_string_expression (_ (_ (_ (_ (_ (_ (_ (_ (_ (identifier) @variable))))))))))
+(line_single_quote_string_expression (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (identifier) @variable)))))))))))
+(line_single_quote_string_expression (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (identifier) @variable))))))))))))
+(line_single_quote_string_expression (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (identifier) @variable)))))))))))))
+(line_single_quote_string_expression (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (identifier) @variable))))))))))))))
+
 
 (package_header (fq_identifier (identifier) @module))
 
