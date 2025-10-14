@@ -1507,8 +1507,17 @@
           "value": "0"
         },
         {
-          "type": "PATTERN",
-          "value": "[xX]"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "x"
+            },
+            {
+              "type": "STRING",
+              "value": "X"
+            }
+          ]
         },
         {
           "type": "SYMBOL",
@@ -3399,6 +3408,19 @@
               {
                 "type": "SYMBOL",
                 "name": "postfix_expression"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "call_suffix"
+              }
+            ]
+          },
+          {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "type"
               },
               {
                 "type": "SYMBOL",
@@ -6124,6 +6146,10 @@
     [
       "fq_identifier",
       "left_aux_expression"
+    ],
+    [
+      "hexadecimal_literal",
+      "hexadecimal_prefix"
     ]
   ],
   "precedences": [],

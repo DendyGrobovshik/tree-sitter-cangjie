@@ -54,7 +54,7 @@ module.exports = grammar({
     [$.fq_identifier, $.atomic_expression],
     [$.fq_identifier, $.left_aux_expression, $.atomic_expression],
     [$.fq_identifier, $.left_aux_expression],
-    // [$.a, $.b],
+    [$.hexadecimal_literal, $.hexadecimal_prefix],
   ],
 
   rules: {

@@ -128,6 +128,7 @@ const expression_rules = {
     seq($.type, '.', $.identifier),
     // seq($.postfix_expression, '.', $.identifier, optional($.type_arguments)), // TODO:
     seq($.postfix_expression, $.call_suffix),
+    seq($.type, $.call_suffix), // let x = UInt32(0)
     // $.b,
     // $.a,
     

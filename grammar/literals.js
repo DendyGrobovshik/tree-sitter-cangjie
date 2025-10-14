@@ -210,7 +210,7 @@ const literals_rules = {
     $.decimal_fragment
   ),
 
-  hexadecimal_literal: $ => seq('0', /[xX]/, $.hexadecimal_digits),
+  hexadecimal_literal: $ => seq('0', choice('x', 'X'), $.hexadecimal_digits),
 
   binary_literal: $ => prec.left(seq(
     '0', /[bB]/,
