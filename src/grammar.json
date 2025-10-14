@@ -158,6 +158,69 @@
         }
       ]
     },
+    "foreign_declaration": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "foreign"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "foreign_body"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "foreign_member"
+            }
+          ]
+        }
+      ]
+    },
+    "foreign_body": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "{"
+        },
+        {
+          "type": "REPEAT1",
+          "content": {
+            "type": "SYMBOL",
+            "name": "foreign_member"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "}"
+        }
+      ]
+    },
+    "foreign_member": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "class_declaration"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "interface_declaration"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "function_declaration"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "variable_declaration"
+        }
+      ]
+    },
     "preamble": {
       "type": "SEQ",
       "members": [
@@ -1883,6 +1946,10 @@
             {
               "type": "SYMBOL",
               "name": "extend_declaration"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "foreign_declaration"
             }
           ]
         }
@@ -6137,6 +6204,12 @@
       "struct_modifier",
       "interface_modifier",
       "enum_modifier"
+    ],
+    [
+      "variable_modifier",
+      "function_modifier",
+      "class_modifier",
+      "interface_modifier"
     ],
     [
       "class_modifier",

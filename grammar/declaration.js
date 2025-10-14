@@ -12,7 +12,7 @@ const declaration_rules = {
       $.enum_declaration,
       $.type_alias_declaration,
       $.extend_declaration,
-    // $.foreign_declaration,
+      $.foreign_declaration,
     // $.macro_declaration,
     // $.macro_expression,
   )),

@@ -12,6 +12,8 @@
  "var"
  "const"
 
+ "foreign"
+
  "where"
 ] @keyword
 

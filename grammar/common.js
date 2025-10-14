@@ -22,6 +22,27 @@ const common_rules = {
 
   block: $ => seq('{', optional($.expressions_or_declarations), '}'),
 
+  foreign_declaration: $ => seq(
+    'foreign',
+    choice(
+      $.foreign_body,
+      $.foreign_member,
+    ),
+  ),
+
+  foreign_body: $ => seq(
+    '{',
+    repeat1($.foreign_member),
+    '}'
+  ),
+
+  foreign_member: $ => choice(
+    $.class_declaration,
+    $.interface_declaration,
+    $.function_declaration,
+    // $.macro_expression,
+    $.variable_declaration,
+  ),
 }
 
 module.exports = common_rules;

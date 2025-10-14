@@ -1867,6 +1867,67 @@
     }
   },
   {
+    "type": "foreign_body",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "foreign_member",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "foreign_declaration",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "foreign_body",
+          "named": true
+        },
+        {
+          "type": "foreign_member",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "foreign_member",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "class_declaration",
+          "named": true
+        },
+        {
+          "type": "function_declaration",
+          "named": true
+        },
+        {
+          "type": "interface_declaration",
+          "named": true
+        },
+        {
+          "type": "variable_declaration",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "fq_identifier",
     "named": true,
     "fields": {},
@@ -3868,6 +3929,10 @@
           "named": true
         },
         {
+          "type": "foreign_declaration",
+          "named": true
+        },
+        {
           "type": "function_declaration",
           "named": true
         },
@@ -4683,6 +4748,10 @@
   },
   {
     "type": "for",
+    "named": false
+  },
+  {
+    "type": "foreign",
     "named": false
   },
   {
