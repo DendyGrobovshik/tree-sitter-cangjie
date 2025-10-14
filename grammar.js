@@ -49,7 +49,6 @@ module.exports = grammar({
     [$.function_modifier, $.class_modifier],
     [$.unit_literal, $.parameter_type],
     [$.nominative_member_modifier, $.variable_declaration],
-    [$.assignment_expression, $._binary_expression],
     [$.fq_identifier, $.atomic_expression],
     [$.fq_identifier, $.left_aux_expression, $.atomic_expression],
     [$.fq_identifier, $.left_aux_expression],

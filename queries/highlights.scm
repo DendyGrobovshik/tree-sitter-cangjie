@@ -129,6 +129,8 @@
 [
   "this"
 ] @variable.builtin
+(left_value (left_aux_expression "this")
+ (assignable_suffix (field_access (identifier) @variable.member)))
 
 [
  (line_comment)
