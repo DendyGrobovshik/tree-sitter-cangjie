@@ -5637,35 +5637,52 @@
       ]
     },
     "nominative_member": {
-      "type": "CHOICE",
+      "type": "SEQ",
       "members": [
         {
-          "type": "SYMBOL",
-          "name": "nominative_init"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "annotations"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         },
         {
-          "type": "SYMBOL",
-          "name": "static_init"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "class_finilizer"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "variable_declaration"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "function_declaration"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "property_declaration"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "nominative_primary_init"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "nominative_init"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "static_init"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "class_finilizer"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "variable_declaration"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "function_declaration"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "property_declaration"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "nominative_primary_init"
+            }
+          ]
         }
       ]
     },
@@ -5778,8 +5795,25 @@
       ]
     },
     "interface_member": {
-      "type": "SYMBOL",
-      "name": "function_declaration"
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "annotations"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "function_declaration"
+        }
+      ]
     },
     "enum_body": {
       "type": "SEQ",
@@ -5896,15 +5930,32 @@
       ]
     },
     "enum_member": {
-      "type": "CHOICE",
+      "type": "SEQ",
       "members": [
         {
-          "type": "SYMBOL",
-          "name": "function_declaration"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "annotations"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         },
         {
-          "type": "SYMBOL",
-          "name": "property_declaration"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "function_declaration"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "property_declaration"
+            }
+          ]
         }
       ]
     },
@@ -5931,18 +5982,6 @@
     "nominative_primary_init": {
       "type": "SEQ",
       "members": [
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "annotations"
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
-        },
         {
           "type": "CHOICE",
           "members": [
@@ -6086,10 +6125,14 @@
       ]
     },
     "annotations": {
-      "type": "REPEAT1",
+      "type": "PREC_RIGHT",
+      "value": 0,
       "content": {
-        "type": "SYMBOL",
-        "name": "annotation"
+        "type": "REPEAT1",
+        "content": {
+          "type": "SYMBOL",
+          "name": "annotation"
+        }
       }
     },
     "annotation": {

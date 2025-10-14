@@ -1237,9 +1237,13 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "annotations",
+          "named": true
+        },
         {
           "type": "function_declaration",
           "named": true
@@ -2360,9 +2364,13 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "annotations",
+          "named": true
+        },
         {
           "type": "function_declaration",
           "named": true
@@ -2962,9 +2970,13 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "annotations",
+          "named": true
+        },
         {
           "type": "class_finilizer",
           "named": true
@@ -3009,10 +3021,6 @@
       "multiple": true,
       "required": true,
       "types": [
-        {
-          "type": "annotations",
-          "named": true
-        },
         {
           "type": "block",
           "named": true

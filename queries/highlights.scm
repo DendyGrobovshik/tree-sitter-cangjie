@@ -94,6 +94,7 @@
  "abstract"
  "open"
  "sealed"
+ "mut"
 
  "override"
  "redef"

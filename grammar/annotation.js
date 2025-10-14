@@ -1,5 +1,5 @@
 const annotation_rules = {
-  annotations: $ => repeat1($.annotation),
+  annotations: $ => prec.right(repeat1($.annotation)),
 
   annotation: $ => seq('@', $.fq_identifier, optional(seq('[', $.annotation_arguments, ']'))),
 

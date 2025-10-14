@@ -16,16 +16,18 @@ const nominative_rules = {
 
   class_body: $ => seq('{', repeat($.nominative_member), '}'),
 
-  nominative_member: $ => choice(
-    $.nominative_init,
-    $.static_init,
-    $.class_finilizer,
-    $.variable_declaration,
-    $.function_declaration,
-    $.property_declaration,
-    $.nominative_primary_init,
+  nominative_member: $ => seq(
+    optional($.annotations),
+    choice(
+      $.nominative_init,
+      $.static_init,
+      $.class_finilizer,
+      $.variable_declaration,
+      $.function_declaration,
+      $.property_declaration,
+      $.nominative_primary_init,
     // $.macro_expression, // TODO: uncomment
-  ),
+  )),
 
   nominative_init: $ => seq(
     optional($.nominative_member_modifier),
@@ -46,7 +48,10 @@ const nominative_rules = {
 
   interface_body: $ => seq('{', repeat($.interface_member), '}'),
 
-  interface_member: $ => $.function_declaration,
+  interface_member: $ => seq(
+    optional($.annotations),
+    $.function_declaration,
+  ),
 
   enum_body: $ => seq(
     '{',
@@ -62,16 +67,17 @@ const nominative_rules = {
     optional(seq('(', $.type, repeat(seq(',', $.type)) ,')'))
   ),
 
-  enum_member: $ => choice(
-    $.function_declaration,
-    $.property_declaration,
-    // $.macro_expression, // TODO: uncomment
-  ),
+  enum_member: $ => seq(
+    optional($.annotations),
+    choice(
+      $.function_declaration,
+      $.property_declaration,
+      // $.macro_expression, // TODO: uncomment
+  )),
 
   struct_body: $ => seq('{', repeat($.nominative_member), '}'),
 
   nominative_primary_init: $ => seq(
-    optional($.annotations),
     optional($.nominative_member_modifier),
     $.identifier,
     '(',
