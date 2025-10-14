@@ -2162,6 +2162,21 @@
     "fields": {}
   },
   {
+    "type": "identifier",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "capital",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "if_expression",
     "named": true,
     "fields": {},
@@ -4695,6 +4710,10 @@
     "named": false
   },
   {
+    "type": "capital",
+    "named": true
+  },
+  {
     "type": "case",
     "named": false
   },
@@ -4789,10 +4808,6 @@
   {
     "type": "i8",
     "named": false
-  },
-  {
-    "type": "identifier",
-    "named": true
   },
   {
     "type": "if",

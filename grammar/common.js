@@ -3,7 +3,12 @@ const common_rules = {
     $.identifier, repeat(seq('.', $.identifier)))
   ),
 
-  identifier: _ => /[A-Za-z][A-Za-z0-9_]*/,
+  identifier: $ => choice(
+    field("lowercase", token(/[a-z][A-Za-z0-9_]*/)),
+    $.capital,
+  ),
+
+  capital: _ => token(/[A-Z][A-Za-z0-9_]*/),
 
   line_comment: _ => seq(
     '//',

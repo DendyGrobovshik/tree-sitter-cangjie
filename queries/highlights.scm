@@ -120,6 +120,7 @@
 ] @constructor
 (enum_constructor (identifier) @constructor)
 (enum_pattern_constructor (identifier) @constructor)
+(capital) @constructor
 
 (variable_declaration (patterns_maybe_irrefutable (var_binding_pattern (identifier) @variable.member)))
 [
@@ -189,5 +190,4 @@
 (line_single_quote_string_expression ("${") @punctuation.special)
 (line_single_quote_string_expression ("}") @punctuation.special)
 
-; (atomic_expression (identifier) @variable) 
 (annotation (fq_identifier) @attribute)

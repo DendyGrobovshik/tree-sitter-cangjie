@@ -76,8 +76,31 @@
       }
     },
     "identifier": {
-      "type": "PATTERN",
-      "value": "[A-Za-z][A-Za-z0-9_]*"
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "FIELD",
+          "name": "lowercase",
+          "content": {
+            "type": "TOKEN",
+            "content": {
+              "type": "PATTERN",
+              "value": "[a-z][A-Za-z0-9_]*"
+            }
+          }
+        },
+        {
+          "type": "SYMBOL",
+          "name": "capital"
+        }
+      ]
+    },
+    "capital": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "[A-Z][A-Za-z0-9_]*"
+      }
     },
     "line_comment": {
       "type": "SEQ",
