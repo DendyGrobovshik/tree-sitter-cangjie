@@ -71,6 +71,7 @@ const nominative_rules = {
   struct_body: $ => seq('{', repeat($.nominative_member), '}'),
 
   nominative_primary_init: $ => seq(
+    optional($.annotations),
     optional($.nominative_member_modifier),
     $.identifier,
     '(',

@@ -66,6 +66,7 @@
   "in"
   "=>"
   "<:"
+  "@"
 ] @keyword.operator
 
 [
@@ -181,3 +182,4 @@
 (line_single_quote_string_expression ("}") @punctuation.special)
 
 ; (atomic_expression (identifier) @variable) 
+(annotation (fq_identifier) @attribute)
