@@ -27,6 +27,7 @@
 ] @keyword.type
 
 [
+ "try"
  "throw"
  "catch"
  "finally"
