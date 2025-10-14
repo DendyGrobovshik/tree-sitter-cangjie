@@ -49,13 +49,12 @@ module.exports = grammar({
     [$.function_modifier, $.class_modifier],
     [$.unit_literal, $.parameter_type],
     [$.nominative_member_modifier, $.variable_declaration],
-    // [$.expression, $.assignment_expression],
-    [$.expression, $._binary_expression],
     [$.assignment_expression, $._binary_expression],
     [$.fq_identifier, $.atomic_expression],
     [$.fq_identifier, $.left_aux_expression, $.atomic_expression],
     [$.fq_identifier, $.left_aux_expression],
     [$.hexadecimal_literal, $.hexadecimal_prefix],
+    [$.left_aux_expression, $.this_super_expression],
   ],
 
   rules: {

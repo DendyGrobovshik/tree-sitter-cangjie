@@ -4,7 +4,7 @@ const common_rules = {
   ),
 
   identifier: $ => choice(
-    field("lowercase", token(/[a-z][A-Za-z0-9_]*/)),
+    field("lowercase", token(/[a-z_][A-Za-z0-9_]*/)),
     $.capital,
   ),
 

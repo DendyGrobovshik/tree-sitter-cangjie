@@ -34,7 +34,7 @@ const expression_rules = {
       '_',
     ),
     $.assign_operator,
-    $.flow_expression,
+    $.expression,
   ),
 
   assign_operator: _ => token(seq(
@@ -45,7 +45,7 @@ const expression_rules = {
   left_value: $ => seq(
     $.left_aux_expression,
     optional('?'),
-    $.assignable_suffix,
+    optional($.assignable_suffix),
   ),
 
   assignable_suffix: $ => choice(
@@ -56,8 +56,8 @@ const expression_rules = {
   left_aux_expression: $ => choice(
     seq($.identifier, optional($.type_arguments)),
     $.type,
-    // 'this',
-    // 'super',
+    'this',
+    'super',
     // seq($.left_aux_expression, optional('?'), choice(
     //   prec.right(seq('.', $.identifier, optional($.type))),
     //   $.call_suffix,
@@ -126,8 +126,8 @@ const expression_rules = {
   postfix_expression: $ => prec.right(PREC.POSTFIX, choice(
     $.atomic_expression,
     seq($.type, '.', $.identifier),
-    // seq($.postfix_expression, '.', $.identifier, optional($.type_arguments)), // TODO:
-    seq($.postfix_expression, $.call_suffix),
+    field("before_dot", seq($.postfix_expression, '.', $.identifier, optional($.type_arguments))),
+    field("before_call", seq($.postfix_expression, $.call_suffix)),
     seq($.type, $.call_suffix), // let x = UInt32(0)
     // $.b,
     // $.a,

@@ -115,6 +115,9 @@
   "super"
 ] @function.builtin
 
+(property_body_member "get" @function.builtin)
+(property_body_member "set" @function.builtin)
+
 [
   "init"
 ] @constructor

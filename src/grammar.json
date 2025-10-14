@@ -85,7 +85,7 @@
             "type": "TOKEN",
             "content": {
               "type": "PATTERN",
-              "value": "[a-z][A-Za-z0-9_]*"
+              "value": "[a-z_][A-Za-z0-9_]*"
             }
           }
         },
@@ -2735,7 +2735,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "flow_expression"
+          "name": "expression"
         }
       ]
     },
@@ -2836,8 +2836,16 @@
           ]
         },
         {
-          "type": "SYMBOL",
-          "name": "assignable_suffix"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "assignable_suffix"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         }
       ]
     },
@@ -2881,6 +2889,14 @@
         {
           "type": "SYMBOL",
           "name": "type"
+        },
+        {
+          "type": "STRING",
+          "value": "this"
+        },
+        {
+          "type": "STRING",
+          "value": "super"
         }
       ]
     },
@@ -3510,17 +3526,54 @@
             ]
           },
           {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "SYMBOL",
-                "name": "postfix_expression"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "call_suffix"
-              }
-            ]
+            "type": "FIELD",
+            "name": "before_dot",
+            "content": {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "postfix_expression"
+                },
+                {
+                  "type": "STRING",
+                  "value": "."
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "identifier"
+                },
+                {
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "SYMBOL",
+                      "name": "type_arguments"
+                    },
+                    {
+                      "type": "BLANK"
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "type": "FIELD",
+            "name": "before_call",
+            "content": {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "postfix_expression"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "call_suffix"
+                }
+              ]
+            }
           },
           {
             "type": "SEQ",
@@ -6308,14 +6361,6 @@
       "variable_declaration"
     ],
     [
-      "expression",
-      "_binary_expression"
-    ],
-    [
-      "assignment_expression",
-      "_binary_expression"
-    ],
-    [
       "fq_identifier",
       "atomic_expression"
     ],
@@ -6331,6 +6376,10 @@
     [
       "hexadecimal_literal",
       "hexadecimal_prefix"
+    ],
+    [
+      "left_aux_expression",
+      "this_super_expression"
     ]
   ],
   "precedences": [],
