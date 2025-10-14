@@ -23,6 +23,7 @@
  "struct"
  "enum"
  "type"
+ "extend"
 ] @keyword.type
 
 [
@@ -75,6 +76,7 @@
   "case"
   "match"
   "if"
+  "else"
 ] @keyword.conditional
 
 [
@@ -90,6 +92,8 @@
  "protected"
  "internal"
  "private"
+
+ "static"
 
  "abstract"
  "open"
