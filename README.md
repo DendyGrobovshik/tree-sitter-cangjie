@@ -7,9 +7,10 @@ STATUS: in development
 # Installation
 
 - Clone this repo
-- `tree-sitter generate && tree-siiter build`
-- set up nvim-treesitter (add in nvim configs)
+- Build it `tree-sitter generate`
+- Set up nvim-treesitter (add in nvim configs, e.g. in `init.lua`)
 ```lua
+local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
 parser_config.cangjie = {
   install_info = {
     url = "PATH/TO/CLONED/REPO", -- local path or git repo
@@ -30,5 +31,7 @@ vim.filetype.add({
   },
 })
 ```
-- copy queries (file `queries/highlights.scm) to nvim (runtimepath) most likely to `~/.config/nvim/queries/cangjie/highlights.scm`
+- Copy query (file `queries/highlights.scm`) to nvim (runtimepath) most likely to `~/.config/nvim/queries/cangjie/highlights.scm`
+- Run `:TSInstall cangjie` in nvim
+- In case of problems check `:LazuHealth`
 
