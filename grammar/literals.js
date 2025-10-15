@@ -52,7 +52,7 @@ const literals_rules = {
     $.decimal_fragment,
   ),
 
-  decimal_fragment: _ => prec.left(seq(
+  decimal_fragment: _ => prec.right(seq(
     /[0-9]/,
     repeat(choice('_', /[0-9]/)),
   )),
@@ -191,18 +191,23 @@ const literals_rules = {
     )
   )),
 
-  float_literal_suffix: $ => choice('f16', 'f32', 'f64'),
+  float_literal_suffix: _ => choice('f16', 'f32', 'f64'),
 
-  hexadecimal_digits: $ => prec.left(seq(
+  hexadecimal_digits: $ => prec.right(seq(
     $.hexadecimal_digit,
     repeat(choice('_', $.hexadecimal_digit))
   )),
 
-  hexadecimal_digit: $ => /[0-9a-fA-F]/,
+  // regex /[0-9a-fA-F]/ doesn't work here
+  hexadecimal_digit: _ => choice(
+    '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
+    'a', 'b', 'c', 'd', 'e', 'f',
+    'A', 'B', 'C', 'D', 'E', 'F'
+  ),
 
   hexadecimal_fraction: $ => seq('.', $.hexadecimal_digits),
 
-  hexadecimal_prefix: $ => seq('0', choice('x', 'X')),
+  hexadecimal_prefix: _ => seq('0', choice('x', 'X')),
 
   hexadecial_exponent: $ => seq(
     /[pP]/,
@@ -212,13 +217,13 @@ const literals_rules = {
 
   hexadecimal_literal: $ => seq('0', choice('x', 'X'), $.hexadecimal_digits),
 
-  binary_literal: $ => prec.left(seq(
+  binary_literal: $ => prec.right(seq(
     '0', /[bB]/,
     $.binary_digit,
     repeat(choice('_', $.binary_digit))
   )),
 
-  octal_literal: $ => prec.left(seq(
+  octal_literal: $ => prec.right(seq(
     '0', /[oO]/,
     $.octal_digit,
     repeat(choice('_', $.octal_digit))

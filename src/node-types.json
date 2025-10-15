@@ -2112,6 +2112,11 @@
     }
   },
   {
+    "type": "hexadecimal_digit",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "hexadecimal_digits",
     "named": true,
     "fields": {},
@@ -4575,6 +4580,38 @@
     "named": false
   },
   {
+    "type": "2",
+    "named": false
+  },
+  {
+    "type": "3",
+    "named": false
+  },
+  {
+    "type": "4",
+    "named": false
+  },
+  {
+    "type": "5",
+    "named": false
+  },
+  {
+    "type": "6",
+    "named": false
+  },
+  {
+    "type": "7",
+    "named": false
+  },
+  {
+    "type": "8",
+    "named": false
+  },
+  {
+    "type": "9",
+    "named": false
+  },
+  {
     "type": ":",
     "named": false
   },
@@ -4635,7 +4672,31 @@
     "named": false
   },
   {
+    "type": "A",
+    "named": false
+  },
+  {
+    "type": "B",
+    "named": false
+  },
+  {
     "type": "Bool",
+    "named": false
+  },
+  {
+    "type": "C",
+    "named": false
+  },
+  {
+    "type": "D",
+    "named": false
+  },
+  {
+    "type": "E",
+    "named": false
+  },
+  {
+    "type": "F",
     "named": false
   },
   {
@@ -4731,6 +4792,10 @@
     "named": false
   },
   {
+    "type": "a",
+    "named": false
+  },
+  {
     "type": "abstract",
     "named": false
   },
@@ -4748,6 +4813,10 @@
   },
   {
     "type": "break",
+    "named": false
+  },
+  {
+    "type": "c",
     "named": false
   },
   {
@@ -4775,7 +4844,15 @@
     "named": false
   },
   {
+    "type": "d",
+    "named": false
+  },
+  {
     "type": "do",
+    "named": false
+  },
+  {
+    "type": "e",
     "named": false
   },
   {
@@ -4829,10 +4906,6 @@
   {
     "type": "get",
     "named": false
-  },
-  {
-    "type": "hexadecimal_digit",
-    "named": true
   },
   {
     "type": "i16",

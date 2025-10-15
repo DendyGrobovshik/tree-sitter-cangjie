@@ -187,6 +187,8 @@
 (interface_declaration (identifier) @type.definition)
 
 (string_literal) @string
+(byte_literal "b" @string.escape)
+(rune_literal "r" @string.escape)
 
 ; Can highlighting inside string interpolation be enhanced?
 (line_single_quote_string_expression (_ (identifier) @variable))
