@@ -30,7 +30,7 @@ const nominative_rules = {
   )),
 
   nominative_init: $ => seq(
-    optional($.nominative_member_modifier),
+    repeat($.nominative_member_modifier),
     choice('init', $.identifier),
     $.function_parameters,
     $.block

@@ -105,6 +105,8 @@
 
  "override"
  "redef"
+
+ "unsafe"
 ] @keyword.modifier
 
 [
