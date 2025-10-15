@@ -73,6 +73,8 @@
   "@"
 ] @keyword.operator
 
+(assign_operator) @keyword.operator
+
 [
   "case"
   "match"
