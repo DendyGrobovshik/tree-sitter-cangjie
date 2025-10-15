@@ -679,6 +679,10 @@
         {
           "type": "hex_char_byte",
           "named": true
+        },
+        {
+          "type": "unicode_character_literal",
+          "named": true
         }
       ]
     }

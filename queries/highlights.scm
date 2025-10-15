@@ -145,6 +145,9 @@
   (integer_literal)
 ] @number
 
+(unicode_character_literal
+  (hexadecimal_digit) @number)
+
 [
   "["
   "]"
@@ -187,7 +190,9 @@
 (interface_declaration (identifier) @type.definition)
 
 (string_literal) @string
+(byte_literal (symbol_literal) @string)
 (byte_literal "b" @string.escape)
+(rune_literal (symbol_literal) @string)
 (rune_literal "r" @string.escape)
 
 ; Can highlighting inside string interpolation be enhanced?

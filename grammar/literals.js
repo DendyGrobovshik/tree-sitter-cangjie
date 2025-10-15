@@ -109,7 +109,7 @@ const literals_rules = {
     $.escaped_identifier,
   ),
 
-  unicode_character_literal: $ => seq(
+  unicode_character_literal: $ => prec.right(seq(
     '\\',
     'u',
     '{',
@@ -122,7 +122,7 @@ const literals_rules = {
     optional($.hexadecimal_digit),
     optional($.hexadecimal_digit),
     '}'
-  ),
+  )),
 
   escaped_identifier: $ => seq(
     '\\',
@@ -153,6 +153,7 @@ const literals_rules = {
 
   byte_escape_seq: $ => choice(
     $.hex_char_byte,
+    $.unicode_character_literal, // NOTE: not by the spec
     $.byte_escaped_identifier,
   ),
 
