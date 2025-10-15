@@ -57,6 +57,7 @@ const nominative_rules = {
     '{',
     optional('|'), $.enum_constructor,
     repeat(seq('|', $.enum_constructor)),
+    optional(seq('|', '...')),
     repeat($.enum_member),
     '}'
   ),
