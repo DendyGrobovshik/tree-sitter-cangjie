@@ -1687,9 +1687,13 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "annotations",
+          "named": true
+        },
         {
           "type": "function_declaration",
           "named": true
@@ -2796,7 +2800,22 @@
   {
     "type": "match_expression",
     "named": true,
-    "fields": {},
+    "fields": {
+      "case_expression": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "_",
+            "named": false
+          },
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      }
+    },
     "children": {
       "multiple": true,
       "required": true,

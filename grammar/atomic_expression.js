@@ -38,10 +38,12 @@ const atomic_expression_rules = {
     choice(
       seq('(', $.expression, ')', '{', repeat1($.match_case), '}'),
       seq('{', 
-        'case', choice($.expression, '_'),
-        '=>', 
-        $._expression_or_declaration, repeat1(seq('\n', optional($._expression_or_declaration))),
-        '}'),
+        repeat1(seq(
+          'case',field("case_expression", choice($.expression, '_')),
+          '=>', $._expression_or_declaration,
+        )),
+        '}'
+      ),
     )
   ),
 

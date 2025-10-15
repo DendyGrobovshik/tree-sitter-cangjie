@@ -9,11 +9,14 @@ const extend_rules = {
 
   extend_body: $ => seq('{', repeat($.extend_member), '}'),
 
-  extend_member: $ => choice(
-    $.function_declaration,
-    // $.macro_expression, // TODO: uncomment
-    $.property_declaration,
-  )
+  extend_member: $ => seq(
+    optional($.annotations),
+    choice(
+      $.function_declaration,
+      // $.macro_expression, // TODO: uncomment
+      $.property_declaration,
+    )
+  ),
 }
 
 module.exports = extend_rules;
