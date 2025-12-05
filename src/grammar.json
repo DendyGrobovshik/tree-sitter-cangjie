@@ -3377,7 +3377,7 @@
       }
     },
     "range_expression": {
-      "type": "PREC_LEFT",
+      "type": "PREC_RIGHT",
       "value": 5,
       "content": {
         "type": "SEQ",
@@ -3659,6 +3659,10 @@
               {
                 "type": "STRING",
                 "value": "/"
+              },
+              {
+                "type": "STRING",
+                "value": "%"
               }
             ]
           },
@@ -6757,9 +6761,6 @@
     [
       "left_aux_expression",
       "atomic_expression"
-    ],
-    [
-      "range_expression"
     ]
   ],
   "precedences": [],

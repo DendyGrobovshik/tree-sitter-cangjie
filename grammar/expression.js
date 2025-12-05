@@ -111,7 +111,7 @@ const expression_rules = {
   shifting_expression: $ => prec.right(PREC.SHIFTING_EXPRESSION, seq($._binary_expression, choice('<<', '>>'), $._binary_expression)),
   additive_expression: $ => prec.left(PREC.ADDITIVE_EXPRESSION, seq($._binary_expression, choice('+', '-'), $._binary_expression)),
   multiplicative_expresion: $ => prec.left(PREC.MULTIPLICATIVE_EXPRESSION,
-    seq($._binary_expression, choice('*', '/'), $._binary_expression)),
+    seq($._binary_expression, choice('*', '/', '%'), $._binary_expression)),
   exponent_expression: $ => prec.right(PREC.EXPONENT_EXPRESSION, seq($._binary_expression, '**', $._binary_expression)),
 
   _non_binary: $ => prec.right(PREC.EXPONENT_EXPRESSION + 1, $._unary_expression),
