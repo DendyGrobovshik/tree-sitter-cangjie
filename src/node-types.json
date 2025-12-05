@@ -3350,6 +3350,10 @@
           "named": true
         },
         {
+          "type": "trailing_lambda_expression",
+          "named": true
+        },
+        {
           "type": "type",
           "named": true
         }

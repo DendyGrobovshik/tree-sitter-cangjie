@@ -134,7 +134,7 @@ const expression_rules = {
     
     seq($.postfix_expression, $.index_access),
     // seq($.postfix_expression, '.', $.identifier, optional($.call_suffix), $.trailing_lambda_expression),
-    // seq($.identifier, optional($.call_suffix), $.trailing_lambda_expression),
+    seq($.postfix_expression, optional($.call_suffix), $.trailing_lambda_expression),
     // TODO: command below can cause infinite loop for
     // func f() { return 1 }
     // seq($.postfix_expression, repeat(seq('?', $.quest_separated_items))),

@@ -116,14 +116,14 @@ const atomic_expression_rules = {
     '{',
     optional($.lambda_parameters),
     '=>',
-    optional($._expression_or_declaration),
+    repeat($._expression_or_declaration),
     '}'
   ),
 
   trailing_lambda_expression: $ => seq(
     '{',
     optional(seq($.lambda_parameters, '=>')),
-    optional($._expression_or_declaration),
+    repeat($._expression_or_declaration),
     '}'
   ),
 

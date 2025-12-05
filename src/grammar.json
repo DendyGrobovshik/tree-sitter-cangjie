@@ -2337,10 +2337,6 @@
           ]
         },
         {
-          "type": "STRING",
-          "value": ":"
-        },
-        {
           "type": "CHOICE",
           "members": [
             {
@@ -2351,6 +2347,10 @@
               "type": "BLANK"
             }
           ]
+        },
+        {
+          "type": "STRING",
+          "value": ":"
         },
         {
           "type": "SYMBOL",
@@ -3852,6 +3852,31 @@
                 "name": "index_access"
               }
             ]
+          },
+          {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "postfix_expression"
+              },
+              {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "call_suffix"
+                  },
+                  {
+                    "type": "BLANK"
+                  }
+                ]
+              },
+              {
+                "type": "SYMBOL",
+                "name": "trailing_lambda_expression"
+              }
+            ]
           }
         ]
       }
@@ -4870,16 +4895,11 @@
           "value": "=>"
         },
         {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "_expression_or_declaration"
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_expression_or_declaration"
+          }
         },
         {
           "type": "STRING",
@@ -4916,16 +4936,11 @@
           ]
         },
         {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "_expression_or_declaration"
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_expression_or_declaration"
+          }
         },
         {
           "type": "STRING",
