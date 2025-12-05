@@ -15,6 +15,7 @@
  "foreign"
 
  "where"
+ "main"
 ] @keyword
 
 [

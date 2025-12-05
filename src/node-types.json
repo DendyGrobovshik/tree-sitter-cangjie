@@ -2779,6 +2779,29 @@
     }
   },
   {
+    "type": "main_declaration",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "block",
+          "named": true
+        },
+        {
+          "type": "function_parameters",
+          "named": true
+        },
+        {
+          "type": "type",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "match_case",
     "named": true,
     "fields": {},
@@ -4046,6 +4069,10 @@
           "named": true
         },
         {
+          "type": "main_declaration",
+          "named": true
+        },
+        {
           "type": "struct_declaration",
           "named": true
         },
@@ -5005,6 +5032,10 @@
   },
   {
     "type": "macro",
+    "named": false
+  },
+  {
+    "type": "main",
     "named": false
   },
   {

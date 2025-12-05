@@ -13,9 +13,10 @@ const declaration_rules = {
       $.type_alias_declaration,
       $.extend_declaration,
       $.foreign_declaration,
-    // $.macro_declaration,
-    // $.macro_expression,
-  )),
+      $.main_declaration,
+      // $.macro_declaration,
+      // $.macro_expression,
+    )),
 
   type_alias_declaration: $ => seq(
     optional($.type_modifier),
@@ -24,7 +25,14 @@ const declaration_rules = {
     optional($.type_parameters),
     '=',
     $.type
-  )
+  ),
+
+  main_declaration: $ => seq(
+    'main',
+    $.function_parameters,
+    optional(seq(':', $.type)),
+    $.block,
+  ),
 }
 
 module.exports = declaration_rules;
