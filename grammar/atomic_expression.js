@@ -4,7 +4,7 @@ const atomic_expression_rules = {
     $._literal_constant,
     $.collection_literal,
     $.tuple_literal,
-    // seq($.identifier, optional($.type_arguments), // TODO: check
+    seq($.identifier, optional($.type_arguments)),
     $.if_expression,
     $.match_expression,
     $.loop_expression,

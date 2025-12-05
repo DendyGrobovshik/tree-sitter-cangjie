@@ -34,6 +34,7 @@
 ] @keyword.exception
 
 "func" @keyword.function
+"operator" @keyword.function
 
 [
   "spawn"
@@ -71,6 +72,7 @@
   "=>"
   "<:"
   "@"
+  "!"
 ] @keyword.operator
 
 (assign_operator) @keyword.operator

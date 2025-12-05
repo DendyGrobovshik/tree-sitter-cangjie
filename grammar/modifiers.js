@@ -34,7 +34,6 @@ const modifiers_rules = {
     'static',
     'override',
     'abstract',
-    'operator',
     'redef',
     'mut',
     'unsafe',

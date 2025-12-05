@@ -50,7 +50,10 @@ const nominative_rules = {
 
   interface_member: $ => seq(
     optional($.annotations),
-    $.function_declaration,
+    choice(
+      $.function_declaration,
+      $.property_declaration,
+    )
   ),
 
   enum_body: $ => seq(

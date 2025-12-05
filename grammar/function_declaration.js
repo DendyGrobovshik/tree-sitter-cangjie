@@ -1,8 +1,10 @@
 const function_declaration_rules = {
   function_declaration: $ => prec.right(seq(
     repeat($.function_modifier),
-    'func',
-    $.identifier,
+    choice(
+      seq('func', $.identifier),
+      seq('operator', 'func', $.overloaded_operators),
+    ),
     optional($.type_parameters),
     $.function_parameters,
     optional(seq(':', $.type)),
@@ -23,6 +25,28 @@ const function_declaration_rules = {
     $.type,
     optional(seq('=', $.expression))
   ),
+
+  overloaded_operators: $ => choice(
+    seq('(', ')'),
+    '!',
+    '+',
+    '-',
+    '**',
+    '*',
+    '/',
+    '%',
+    '<<',
+    '>>',
+    '<',
+    '>',
+    '<=',
+    '>=',
+    '==',
+    '!=',
+    '&',
+    '|',
+    '^',
+  )
 }
 
 module.exports = function_declaration_rules;

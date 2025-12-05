@@ -276,7 +276,7 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "types": [
         {
@@ -357,6 +357,10 @@
         },
         {
           "type": "tuple_literal",
+          "named": true
+        },
+        {
+          "type": "type_arguments",
           "named": true
         },
         {
@@ -1983,6 +1987,10 @@
           "named": true
         },
         {
+          "type": "overloaded_operators",
+          "named": true
+        },
+        {
           "type": "type",
           "named": true
         },
@@ -2401,6 +2409,10 @@
         },
         {
           "type": "function_declaration",
+          "named": true
+        },
+        {
+          "type": "property_declaration",
           "named": true
         }
       ]
@@ -3097,6 +3109,11 @@
         }
       ]
     }
+  },
+  {
+    "type": "overloaded_operators",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "package_header",
@@ -4504,6 +4521,10 @@
   },
   {
     "type": "${",
+    "named": false
+  },
+  {
+    "type": "%",
     "named": false
   },
   {

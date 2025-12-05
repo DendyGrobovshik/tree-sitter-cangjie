@@ -1904,10 +1904,6 @@
         },
         {
           "type": "STRING",
-          "value": "operator"
-        },
-        {
-          "type": "STRING",
           "value": "redef"
         },
         {
@@ -2134,12 +2130,39 @@
             }
           },
           {
-            "type": "STRING",
-            "value": "func"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "identifier"
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "STRING",
+                    "value": "func"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "identifier"
+                  }
+                ]
+              },
+              {
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "STRING",
+                    "value": "operator"
+                  },
+                  {
+                    "type": "STRING",
+                    "value": "func"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "overloaded_operators"
+                  }
+                ]
+              }
+            ]
           },
           {
             "type": "CHOICE",
@@ -2311,6 +2334,96 @@
               "type": "BLANK"
             }
           ]
+        }
+      ]
+    },
+    "overloaded_operators": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "("
+            },
+            {
+              "type": "STRING",
+              "value": ")"
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": "!"
+        },
+        {
+          "type": "STRING",
+          "value": "+"
+        },
+        {
+          "type": "STRING",
+          "value": "-"
+        },
+        {
+          "type": "STRING",
+          "value": "**"
+        },
+        {
+          "type": "STRING",
+          "value": "*"
+        },
+        {
+          "type": "STRING",
+          "value": "/"
+        },
+        {
+          "type": "STRING",
+          "value": "%"
+        },
+        {
+          "type": "STRING",
+          "value": "<<"
+        },
+        {
+          "type": "STRING",
+          "value": ">>"
+        },
+        {
+          "type": "STRING",
+          "value": "<"
+        },
+        {
+          "type": "STRING",
+          "value": ">"
+        },
+        {
+          "type": "STRING",
+          "value": "<="
+        },
+        {
+          "type": "STRING",
+          "value": ">="
+        },
+        {
+          "type": "STRING",
+          "value": "=="
+        },
+        {
+          "type": "STRING",
+          "value": "!="
+        },
+        {
+          "type": "STRING",
+          "value": "&"
+        },
+        {
+          "type": "STRING",
+          "value": "|"
+        },
+        {
+          "type": "STRING",
+          "value": "^"
         }
       ]
     },
@@ -4024,6 +4137,27 @@
         {
           "type": "SYMBOL",
           "name": "tuple_literal"
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "identifier"
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "type_arguments"
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
+            }
+          ]
         },
         {
           "type": "SYMBOL",
@@ -5983,8 +6117,17 @@
           ]
         },
         {
-          "type": "SYMBOL",
-          "name": "function_declaration"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "function_declaration"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "property_declaration"
+            }
+          ]
         }
       ]
     },
@@ -6517,6 +6660,10 @@
     [
       "left_aux_expression",
       "this_super_expression"
+    ],
+    [
+      "left_aux_expression",
+      "atomic_expression"
     ]
   ],
   "precedences": [],
