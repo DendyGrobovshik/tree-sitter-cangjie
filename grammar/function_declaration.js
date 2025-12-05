@@ -20,8 +20,8 @@ const function_declaration_rules = {
 
   function_parameter: $ => seq(
     choice($.identifier, '_'),
-    ':',
     optional('!'),
+    ':',
     $.type,
     optional(seq('=', $.expression))
   ),
