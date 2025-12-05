@@ -3571,15 +3571,24 @@
     }
   },
   {
+    "type": "rangeOp",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "range_element",
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
-      "required": false,
+      "multiple": true,
+      "required": true,
       "types": [
         {
           "type": "expression",
+          "named": true
+        },
+        {
+          "type": "rangeOp",
           "named": true
         }
       ]
@@ -3591,7 +3600,7 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "additive_expression",
@@ -3651,6 +3660,10 @@
         },
         {
           "type": "prefix_expression",
+          "named": true
+        },
+        {
+          "type": "rangeOp",
           "named": true
         },
         {

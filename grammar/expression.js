@@ -23,6 +23,8 @@ const PREC = {
 }
 
 const expression_rules = {
+  rangeOp: _ => choice('..', '..='),
+
   expression: $ => choice(
     $.assignment_expression,
     $._binary_expression,
@@ -97,7 +99,7 @@ const expression_rules = {
   logic_disjunction_expression: $ => prec.right(PREC.LOGIC_DISJUNCTION, seq($._binary_expression, '||', $._binary_expression)),
   logic_conjunction_expression: $ => prec.right(PREC.LOGIC_CONJUNCTION, seq($._binary_expression, '&&', $._binary_expression)),
   range_expression: $ => prec.right(PREC.RANGE, 
-    seq($._binary_expression, choice('..', '..='), $._binary_expression, optional(seq(':', $._binary_expression)))),
+    seq($._binary_expression, $.rangeOp, $._binary_expression, optional(seq(':', $._binary_expression)))),
   bitwise_disjunction_expresion: $ => prec.right(PREC.BITWISE_DISJUNCTION, seq($._binary_expression, '|', $._binary_expression)),
   bitwise_xor_expression: $ => prec.right(PREC.BITWISE_XOR, seq($._binary_expression, '^', $._binary_expression)),
   bitwise_conjunction_expression: $ => prec.right(PREC.BITWISE_CONJUNCTION, seq($._binary_expression, '&', $._binary_expression)),
@@ -128,9 +130,7 @@ const expression_rules = {
     seq($.type, '.', $.identifier),
     field("before_dot", seq($.postfix_expression, '.', $.identifier, optional($.type_arguments))),
     field("before_call", seq($.postfix_expression, $.call_suffix)),
-    seq($.type, $.call_suffix), // let x = UInt32(0)
-    // $.b,
-    // $.a,
+    seq($.type, $.call_suffix),
     
     seq($.postfix_expression, $.index_access),
     // seq($.postfix_expression, '.', $.identifier, optional($.call_suffix), $.trailing_lambda_expression),
@@ -139,9 +139,6 @@ const expression_rules = {
     // func f() { return 1 }
     // seq($.postfix_expression, repeat(seq('?', $.quest_separated_items))),
   )),
-
-  // a: $ => seq($.atomic_expression),
-  // b: $ => seq($.atomic_expression, $.call_suffix),
 
   call_suffix: $ => seq('(', optional(seq($.value_argument, repeat(seq(',', $.value_argument)))), ')'),
 
@@ -157,11 +154,12 @@ const expression_rules = {
 
   field_access: $ => seq('.', $.identifier),
 
-  range_element: $ => choice(
-    '..',
-    seq(choice('..', '..='), $.expression),
-    seq($.expression, '..'),
-  ),
+  // TODO: `arr[1..]` is not working, because $.rangeOp consumed by $.range_expression before
+  range_element: $ => prec(PREC.RANGE + 1, choice(
+    $.rangeOp,
+    seq($.rangeOp, $.expression),
+    seq($.expression, $.rangeOp),
+  )),
 
   quest_separated_items: $ => prec.right(repeat1($.quest_separated_item)),
 

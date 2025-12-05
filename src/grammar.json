@@ -2968,6 +2968,19 @@
         }
       ]
     },
+    "rangeOp": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": ".."
+        },
+        {
+          "type": "STRING",
+          "value": "..="
+        }
+      ]
+    },
     "expression": {
       "type": "CHOICE",
       "members": [
@@ -3364,7 +3377,7 @@
       }
     },
     "range_expression": {
-      "type": "PREC_RIGHT",
+      "type": "PREC_LEFT",
       "value": 5,
       "content": {
         "type": "SEQ",
@@ -3374,17 +3387,8 @@
             "name": "_binary_expression"
           },
           {
-            "type": "CHOICE",
-            "members": [
-              {
-                "type": "STRING",
-                "value": ".."
-              },
-              {
-                "type": "STRING",
-                "value": "..="
-              }
-            ]
+            "type": "SYMBOL",
+            "name": "rangeOp"
           },
           {
             "type": "SYMBOL",
@@ -4047,48 +4051,43 @@
       ]
     },
     "range_element": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "STRING",
-          "value": ".."
-        },
-        {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "CHOICE",
-              "members": [
-                {
-                  "type": "STRING",
-                  "value": ".."
-                },
-                {
-                  "type": "STRING",
-                  "value": "..="
-                }
-              ]
-            },
-            {
-              "type": "SYMBOL",
-              "name": "expression"
-            }
-          ]
-        },
-        {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "expression"
-            },
-            {
-              "type": "STRING",
-              "value": ".."
-            }
-          ]
-        }
-      ]
+      "type": "PREC",
+      "value": 6,
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "rangeOp"
+          },
+          {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "rangeOp"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "expression"
+              }
+            ]
+          },
+          {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "expression"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "rangeOp"
+              }
+            ]
+          }
+        ]
+      }
     },
     "quest_separated_items": {
       "type": "PREC_RIGHT",
@@ -6758,6 +6757,9 @@
     [
       "left_aux_expression",
       "atomic_expression"
+    ],
+    [
+      "range_expression"
     ]
   ],
   "precedences": [],
