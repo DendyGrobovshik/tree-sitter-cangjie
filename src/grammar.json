@@ -770,8 +770,8 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "STRING",
-          "value": "\""
+          "type": "SYMBOL",
+          "name": "string_quote"
         },
         {
           "type": "REPEAT",
@@ -790,8 +790,21 @@
           }
         },
         {
+          "type": "SYMBOL",
+          "name": "string_quote"
+        }
+      ]
+    },
+    "string_quote": {
+      "type": "CHOICE",
+      "members": [
+        {
           "type": "STRING",
           "value": "\""
+        },
+        {
+          "type": "STRING",
+          "value": "'"
         }
       ]
     },
@@ -1233,17 +1246,20 @@
               "value": "\""
             },
             {
-              "type": "CHOICE",
-              "members": [
-                {
-                  "type": "SYMBOL",
-                  "name": "single_char_byte"
-                },
-                {
-                  "type": "SYMBOL",
-                  "name": "byte_escape_seq"
-                }
-              ]
+              "type": "REPEAT",
+              "content": {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "single_char_byte"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "byte_escape_seq"
+                  }
+                ]
+              }
             },
             {
               "type": "STRING",
@@ -5210,8 +5226,29 @@
       ]
     },
     "constant_pattern": {
-      "type": "SYMBOL",
-      "name": "_literal_constant"
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_literal_constant"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "|"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_literal_constant"
+              }
+            ]
+          }
+        }
+      ]
     },
     "wildcard_pattern": {
       "type": "STRING",

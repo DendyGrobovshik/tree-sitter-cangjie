@@ -85,7 +85,9 @@ const literals_rules = {
     $.multi_line_raw_string_literal,
   ),
 
-  line_string_literal: $ => seq('"', string_internals($), '"'),
+  line_string_literal: $ => seq($.string_quote, string_internals($), $.string_quote),
+
+  string_quote: $ => choice('"', "'"),
 
   multi_line_string_literal: $ => choice(
     seq('"""', string_internals($), '"""'),
@@ -146,7 +148,7 @@ const literals_rules = {
 
   symbol_literal: $ => choice(
     seq("'", choice($.single_char_byte, $.byte_escape_seq), "'"),
-    seq('"', choice($.single_char_byte, $.byte_escape_seq), '"'),
+    seq('"', repeat(choice($.single_char_byte, $.byte_escape_seq)), '"'),
   ),
 
   single_char_byte: $ => /[\u0000-\u0009\u000B\u000C\u000e-\u0026\u0028-\u005B\u005D-\u007F]/,

@@ -15,7 +15,10 @@ const pattern_rules = {
     $.enum_pattern,
   ),
 
-  constant_pattern: $ => $._literal_constant,
+  constant_pattern: $ => seq(
+    $._literal_constant,
+    repeat(seq('|', $._literal_constant)),
+  ),
 
   wildcard_pattern: _ => '_',
 
