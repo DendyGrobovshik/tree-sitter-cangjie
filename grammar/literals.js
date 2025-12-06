@@ -85,9 +85,10 @@ const literals_rules = {
     $.multi_line_raw_string_literal,
   ),
 
-  line_string_literal: $ => seq($.string_quote, string_internals($), $.string_quote),
-
-  string_quote: $ => choice('"', "'"),
+  line_string_literal: $ => choice(
+    seq("'", string_internals($), "'"),
+    seq('"', string_internals($), '"'),
+  ),
 
   multi_line_string_literal: $ => choice(
     seq('"""', string_internals($), '"""'),

@@ -2200,21 +2200,28 @@
   {
     "type": "if_expression",
     "named": true,
-    "fields": {},
+    "fields": {
+      "condition": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "deconstruct",
+            "named": true
+          },
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      }
+    },
     "children": {
       "multiple": true,
       "required": true,
       "types": [
         {
           "type": "block",
-          "named": true
-        },
-        {
-          "type": "deconstruct",
-          "named": true
-        },
-        {
-          "type": "expression",
           "named": true
         },
         {
@@ -2576,7 +2583,7 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
         {
           "type": "escape_seq",
@@ -2584,10 +2591,6 @@
         },
         {
           "type": "line_single_quote_string_expression",
-          "named": true
-        },
-        {
-          "type": "string_quote",
           "named": true
         }
       ]
@@ -3941,11 +3944,6 @@
     }
   },
   {
-    "type": "string_quote",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "struct_body",
     "named": true,
     "fields": {},
@@ -4870,6 +4868,10 @@
   },
   {
     "type": "[",
+    "named": false
+  },
+  {
+    "type": "[]",
     "named": false
   },
   {
