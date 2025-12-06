@@ -3307,14 +3307,24 @@
     "type": "postfix_expression",
     "named": true,
     "fields": {
-      "before_call": {
+      "after_dot": {
         "multiple": true,
         "required": false,
         "types": [
           {
-            "type": "call_suffix",
+            "type": "identifier",
             "named": true
           },
+          {
+            "type": "type_arguments",
+            "named": true
+          }
+        ]
+      },
+      "before_call": {
+        "multiple": false,
+        "required": false,
+        "types": [
           {
             "type": "postfix_expression",
             "named": true
@@ -3322,23 +3332,11 @@
         ]
       },
       "before_dot": {
-        "multiple": true,
+        "multiple": false,
         "required": false,
         "types": [
           {
-            "type": ".",
-            "named": false
-          },
-          {
-            "type": "identifier",
-            "named": true
-          },
-          {
             "type": "postfix_expression",
-            "named": true
-          },
-          {
-            "type": "type_arguments",
             "named": true
           }
         ]

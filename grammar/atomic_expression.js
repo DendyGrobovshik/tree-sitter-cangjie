@@ -52,7 +52,7 @@ const atomic_expression_rules = {
     $.pattern,
     optional($.pattern_guard),
     '=>',
-    $._expression_or_declaration, repeat(seq('\n', optional($._expression_or_declaration))),
+    repeat1($._expression_or_declaration),
   ),
 
   loop_expression: $ => choice(

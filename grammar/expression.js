@@ -130,8 +130,12 @@ const expression_rules = {
   postfix_expression: $ => prec.right(PREC.POSTFIX, choice(
     $.atomic_expression,
     seq($.type, '.', $.identifier),
-    field("before_dot", seq($.postfix_expression, '.', $.identifier, optional($.type_arguments))),
-    field("before_call", seq($.postfix_expression, $.call_suffix)),
+    seq(
+      field("before_dot", $.postfix_expression),
+      '.', 
+      field("after_dot", seq($.identifier, optional($.type_arguments))),
+    ),
+    seq(field("before_call", $.postfix_expression), $.call_suffix),
     seq($.type, $.call_suffix),
     
     seq($.postfix_expression, $.index_access),
