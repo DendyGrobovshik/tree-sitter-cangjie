@@ -46,6 +46,7 @@ const function_declaration_rules = {
     '&',
     '|',
     '^',
+    '[]',
   )
 }
 

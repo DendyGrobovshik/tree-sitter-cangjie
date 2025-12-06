@@ -26,7 +26,7 @@ const atomic_expression_rules = {
   if_expression: $ => seq(
     'if',
     '(',
-    optional($.deconstruct), $.expression,
+    field("condition", seq(optional($.deconstruct), $.expression)),
     ')',
     $.block,
     optional(seq('else', choice($.if_expression, $.block))),
