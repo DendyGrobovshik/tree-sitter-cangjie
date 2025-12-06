@@ -55,18 +55,20 @@ const expression_rules = {
     $.field_access,
   ),
 
-  left_aux_expression: $ => choice(
+  left_aux_expression: $ => prec.right(choice(
     seq($.identifier, optional($.type_arguments)),
     $.type,
     'this',
     'super',
-    // seq($.left_aux_expression, optional('?'), choice(
-    //   prec.right(seq('.', $.identifier, optional($.type))),
-    //   $.call_suffix,
-    //   $.index_access,
-    // )),
+    seq($.left_aux_expression, optional('?'), 
+      choice(
+        seq('.', $.identifier, optional($.type)),
+        $.call_suffix,
+        $.index_access,
+      )
+    ),
     // $.tuple_left_value_expression,
-  ),
+  )),
 
   tuple_left_value_expression: $ => seq(
     '(',

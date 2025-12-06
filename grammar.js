@@ -59,6 +59,8 @@ module.exports = grammar({
     [$.hexadecimal_literal, $.hexadecimal_prefix],
     [$.left_aux_expression, $.this_super_expression],
     [$.left_aux_expression, $.atomic_expression],
+    [$.assignable_suffix, $.left_aux_expression],
+    [$.field_access, $.left_aux_expression],
   ],
 
   rules: {
