@@ -1398,6 +1398,10 @@
             {
               "type": "STRING",
               "value": "0"
+            },
+            {
+              "type": "STRING",
+              "value": "$"
             }
           ]
         }

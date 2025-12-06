@@ -172,7 +172,7 @@ const literals_rules = {
 
   byte_escaped_identifier: $ => seq(
     '\\',
-    choice('t', 'b', 'r', 'n', "'", '"', '\\', 'f', 'v', '0')
+    choice('t', 'b', 'r', 'n', "'", '"', '\\', 'f', 'v', '0', '$')
   ),
 
   float_literal: $ => prec(1, choice(
